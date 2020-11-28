@@ -40,17 +40,6 @@ public class Wxservice {
 //        将获得token给静态属性
 
 
-
-
-
-
-
-
-
-
-
-
-
     }
 
 }
