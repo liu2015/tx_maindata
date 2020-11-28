@@ -8,10 +8,11 @@ import java.util.Map;
 
 public class Wxserviceinfo {
 
-//    发送应用消息测试传入参数
+    //    发送应用消息测试传入参数
     public void Wxserviceinfopost(String paramtest){
-        String dizhi="access_token"+ WxVo.getAccess_token();
+        String dizhi="access_token="+ WxVo.getAccess_token();
         String messageurl="https://qyapi.weixin.qq.com/cgi-bin/message/send?"+dizhi;
+        System.out.println(dizhi);
 
 //        这里可以改成传参的发送内容
         String param="{\n" +
@@ -27,11 +28,15 @@ public class Wxserviceinfo {
                 "   \"duplicate_check_interval\": 1800\n" +
                 "}";
 
-        String posttext=HttpUtils.sendPost(messageurl,param);
+        System.out.println("需要修改传入参数对应，现在只是演示"+paramtest);
+
+        String posttext= HttpUtils.sendPost(messageurl,param);
+        System.out.println(posttext);
         Map  maptext= JSONObject.parseObject(posttext);
+
         if (maptext.get("errmsg").equals("ok"))
         {
-            System.out.println("请求成功，已经发送返回值"+posttext.toString());
+            System.out.println("请求成功，已经发送返回值"+posttext);
 
         }else {
             System.out.println("请求失败");
@@ -39,7 +44,7 @@ public class Wxserviceinfo {
 
     }
 
-//    重写发送请求，Map类型参数 也是是对象格式
+    //    重写发送请求，Map类型参数 也是是对象格式
     public void WxserviceinfoMap(Map map){
         String dizhi="access_token"+ WxVo.getAccess_token();
         String messageurl="https://qyapi.weixin.qq.com/cgi-bin/message/send?"+dizhi;
@@ -59,14 +64,7 @@ public class Wxserviceinfo {
             System.out.println("请求失败");
         }
 
-
-
     }
-
-
-
-
-
 
 
 }
