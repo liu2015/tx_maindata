@@ -6,6 +6,10 @@ import com.ruoyi.system.wxmessage.WxVo;
 
 import java.util.Map;
 
+
+/** 初始化login请求获得token
+ *
+* */
 public class Wxservice {
     public Wxservice() {
 //        初始化 请求信息
