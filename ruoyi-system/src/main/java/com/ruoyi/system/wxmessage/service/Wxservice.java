@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.ruoyi.common.utils.http.HttpUtils;
 import com.ruoyi.system.wxmessage.WxVo;
 
+import javax.annotation.PostConstruct;
 import java.util.Map;
 
 
@@ -21,7 +22,9 @@ public class Wxservice {
         WxVo.setCorpsecret(corpsecret);
         WxVo.setUrl( url );
     }
-
+//初始化方法
+//    在依赖加载完成后，初始化这个方法，获得token
+    @PostConstruct
     public void Wxrequest(){
 //组合成一个 param参数
         String param="corpid="+WxVo.getCorpid()+"corpsecret="+WxVo.getCorpsecret();
