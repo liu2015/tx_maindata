@@ -41,7 +41,6 @@ public class Wxservice {
         System.out.println("请求成功，获得token=  "+token.get("access_token"));
 //        将获得token给静态属性
 
-
     }
 
 }
