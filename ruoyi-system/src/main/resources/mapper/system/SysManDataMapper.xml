@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysManDataMapper">
+    
+    <resultMap type="SysManData" id="SysManDataResult">
+        <result property="id"    column="id"    />
+        <result property="orderId"    column="order_id"    />
+        <result property="offCode"    column="off_code"    />
+        <result property="offName"    column="off_name"    />
+        <result property="offAccanting"    column="off_accanting"    />
+        <result property="shopCode"    column="shop_code"    />
+        <result property="shopName"    column="shop_name"    />
+        <result property="shopType"    column="shop_type"    />
+        <result property="costcenter"    column="costcenter"    />
+        <result property="profitcenter"    column="profitcenter"    />
+        <result property="shopAddress"    column="shop_address"    />
+        <result property="offFico"    column="off_fico"    />
+        <result property="offIt"    column="off_it"    />
+        <result property="beiyong1"    column="beiyong1"    />
+        <result property="beiyong2"    column="beiyong2"    />
+    </resultMap>
+
+    <sql id="selectSysManDataVo">
+        select id, order_id, off_code, off_name, off_accanting, shop_code, shop_name, shop_type, costcenter, profitcenter, shop_address, off_fico, off_it, beiyong1, beiyong2 from sys_man_data
+    </sql>
+
+    <select id="selectSysManDataList" parameterType="SysManData" resultMap="SysManDataResult">
+        <include refid="selectSysManDataVo"/>
+        <where>  
+            <if test="orderId != null  and orderId != ''"> and order_id = #{orderId}</if>
+            <if test="offCode != null  and offCode != ''"> and off_code = #{offCode}</if>
+            <if test="offName != null  and offName != ''"> and off_name like concat('%', #{offName}, '%')</if>
+            <if test="offAccanting != null  and offAccanting != ''"> and off_accanting = #{offAccanting}</if>
+            <if test="shopCode != null  and shopCode != ''"> and shop_code = #{shopCode}</if>
+            <if test="shopName != null  and shopName != ''"> and shop_name like concat('%', #{shopName}, '%')</if>
+            <if test="shopType != null  and shopType != ''"> and shop_type = #{shopType}</if>
+            <if test="costcenter != null  and costcenter != ''"> and costcenter = #{costcenter}</if>
+            <if test="profitcenter != null  and profitcenter != ''"> and profitcenter = #{profitcenter}</if>
+            <if test="shopAddress != null  and shopAddress != ''"> and shop_address = #{shopAddress}</if>
+            <if test="offFico != null  and offFico != ''"> and off_fico = #{offFico}</if>
+            <if test="offIt != null  and offIt != ''"> and off_it = #{offIt}</if>
+            <if test="beiyong1 != null  and beiyong1 != ''"> and beiyong1 = #{beiyong1}</if>
+            <if test="beiyong2 != null  and beiyong2 != ''"> and beiyong2 = #{beiyong2}</if>
+        </where>
+    </select>
+    
+    <select id="selectSysManDataById" parameterType="Long" resultMap="SysManDataResult">
+        <include refid="selectSysManDataVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSysManData" parameterType="SysManData" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_man_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">order_id,</if>
+            <if test="offCode != null">off_code,</if>
+            <if test="offName != null">off_name,</if>
+            <if test="offAccanting != null">off_accanting,</if>
+            <if test="shopCode != null">shop_code,</if>
+            <if test="shopName != null">shop_name,</if>
+            <if test="shopType != null">shop_type,</if>
+            <if test="costcenter != null">costcenter,</if>
+            <if test="profitcenter != null">profitcenter,</if>
+            <if test="shopAddress != null">shop_address,</if>
+            <if test="offFico != null">off_fico,</if>
+            <if test="offIt != null">off_it,</if>
+            <if test="beiyong1 != null">beiyong1,</if>
+            <if test="beiyong2 != null">beiyong2,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">#{orderId},</if>
+            <if test="offCode != null">#{offCode},</if>
+            <if test="offName != null">#{offName},</if>
+            <if test="offAccanting != null">#{offAccanting},</if>
+            <if test="shopCode != null">#{shopCode},</if>
+            <if test="shopName != null">#{shopName},</if>
+            <if test="shopType != null">#{shopType},</if>
+            <if test="costcenter != null">#{costcenter},</if>
+            <if test="profitcenter != null">#{profitcenter},</if>
+            <if test="shopAddress != null">#{shopAddress},</if>
+            <if test="offFico != null">#{offFico},</if>
+            <if test="offIt != null">#{offIt},</if>
+            <if test="beiyong1 != null">#{beiyong1},</if>
+            <if test="beiyong2 != null">#{beiyong2},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysManData" parameterType="SysManData">
+        update sys_man_data
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="orderId != null">order_id = #{orderId},</if>
+            <if test="offCode != null">off_code = #{offCode},</if>
+            <if test="offName != null">off_name = #{offName},</if>
+            <if test="offAccanting != null">off_accanting = #{offAccanting},</if>
+            <if test="shopCode != null">shop_code = #{shopCode},</if>
+            <if test="shopName != null">shop_name = #{shopName},</if>
+            <if test="shopType != null">shop_type = #{shopType},</if>
+            <if test="costcenter != null">costcenter = #{costcenter},</if>
+            <if test="profitcenter != null">profitcenter = #{profitcenter},</if>
+            <if test="shopAddress != null">shop_address = #{shopAddress},</if>
+            <if test="offFico != null">off_fico = #{offFico},</if>
+            <if test="offIt != null">off_it = #{offIt},</if>
+            <if test="beiyong1 != null">beiyong1 = #{beiyong1},</if>
+            <if test="beiyong2 != null">beiyong2 = #{beiyong2},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysManDataById" parameterType="Long">
+        delete from sys_man_data where id = #{id}
+    </delete>
+
+    <delete id="deleteSysManDataByIds" parameterType="String">
+        delete from sys_man_data where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>
