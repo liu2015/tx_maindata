@@ -77,7 +77,9 @@
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
-    <el-table v-loading="loading" :data="postList" @selection-change="handleSelectionChange">
+    <el-table v-loading="loading" :data="postList"
+    :row-class-name="tableRowClassName"
+     @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="岗位编号" align="center" prop="postId" />
       <el-table-column label="岗位编码" align="center" prop="postCode" />
@@ -208,6 +210,25 @@ export default {
     });
   },
   methods: {
+
+ tableRowClassName({row, rowIndex}) {
+        if (row.postCode === 'ceo') {
+          return 'warning-row';
+        } 
+         if (rowIndex === 3) {
+          return 'success-row';
+        }
+        return '';
+      },
+    
+    // rowname(row){
+
+    //   if(row.postSort==="1")
+    //   {return "danger-row"}
+    //   return ""
+
+    // },
+
     /** 查询岗位列表 */
     getList() {
       this.loading = true;
@@ -320,3 +341,16 @@ export default {
   }
 };
 </script>
+
+<style >
+  .el-table .warning-row {
+    background: #F56C6C;
+    
+  }
+
+  .el-table .success-row {
+    background: #f0f9eb;
+  }
+</style>
+
+

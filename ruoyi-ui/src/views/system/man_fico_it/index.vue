@@ -186,7 +186,9 @@
 	  <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
-    <el-table v-loading="loading" :data="man_fico_itList" @selection-change="handleSelectionChange">
+    <el-table v-loading="loading" :data="man_fico_itList" 
+    :row-class-name="tabrowname"
+    @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="序列" align="center" prop="id" />
       <el-table-column label="创建订单" align="center" prop="orderId" />
@@ -352,6 +354,19 @@ export default {
     });
   },
   methods: {
+
+      tabrowname({row,rowIndex}){
+
+         if (row.orderId ==null || row.orderId==undefined || row.orderId =='') {
+          return 'warning-row';
+        } else if(row.orderId !== null)
+        {
+          return 'success-row'
+        }
+        return '';
+      },
+
+
     /** 查询man_fico_it列表 */
     getList() {
       this.loading = true;
@@ -485,3 +500,15 @@ export default {
   }
 };
 </script>
+
+<style >
+  .el-table .warning-row {
+    background: #F56C6C;
+    
+  }
+
+  .el-table .success-row {
+    background: #f0f9eb;
+  }
+</style>
+
