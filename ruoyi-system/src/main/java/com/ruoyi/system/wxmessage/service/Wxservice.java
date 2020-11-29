@@ -25,7 +25,7 @@ public class Wxservice {
     }
     //初始化方法
 //    在依赖加载完成后，初始化这个方法，获得token
-    @PostConstruct
+//    @PostConstruct
     public void Wxrequest(){
 //组合成一个 param参数
         String param="corpid="+WxVo.getCorpid()+"&corpsecret="+WxVo.getCorpsecret();

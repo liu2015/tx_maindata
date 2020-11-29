@@ -51,3 +51,12 @@ export function exportMan_data(query) {
     params: query
   })
 }
+
+// 修改man_data 递交按钮，自动生成uid
+export function updateuuid(id) {
+  return request({
+    url: '/system/man_data/updateuuid/'+id,
+    method: 'get',
+    // data: id
+  })
+}

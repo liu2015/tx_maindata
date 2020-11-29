@@ -1,6 +1,11 @@
 package com.ruoyi.system.controller;
 
 import java.util.List;
+
+import com.ruoyi.common.utils.DateUtils;
+import com.ruoyi.common.utils.uuid.IdUtils;
+import com.ruoyi.system.wxmessage.service.Wxservice;
+import com.ruoyi.system.wxmessage.service.Wxserviceinfo;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -100,4 +105,84 @@ public class SysManDataController extends BaseController
     {
         return toAjax(sysManDataService.deleteSysManDataByIds(ids));
     }
+
+
+    /**
+     *  递交操作，递交更新，然后生成 订单id
+     *  单个递交
+     *  id组 时间+uuid
+     */
+    @PreAuthorize("@ss.hasPermi('system:man_data:edit')")
+    @Log(title = "man_data", businessType = BusinessType.UPDATE)
+    @GetMapping("/updateuuid/{id}")
+    public AjaxResult updateuuid(@PathVariable Long[] id){
+// 成成一个uuid
+//        记录成功次数
+        int jilu=0;
+
+        System.out.println("接受到请求");
+        String uuid= IdUtils.simpleUUID();
+        String dateTime= DateUtils.dateTime();
+
+        StringBuilder stringBuilder=new StringBuilder();
+        stringBuilder.append(dateTime);
+        stringBuilder.append(uuid);
+
+//        成成一个uuid
+
+        for (Long idd:id
+             ) {
+            System.out.println("遍历id"+idd);
+
+            SysManData sysManData1=new SysManData();
+            sysManData1.setId(idd);
+            sysManData1.setOrderId(String.valueOf(stringBuilder));
+         toAjax(sysManDataService.updateSysManData(sysManData1));
+
+            jilu++;
+
+        }
+        System.out.println("请求成功+++"+jilu);
+//        通知 ，发送企业微信通知
+//        后期通过调度 做获得token
+        if (jilu>0)
+        {
+            Wxservice wx=new Wxservice();
+//           获得token
+            wx.Wxrequest();
+            Wxserviceinfo info=new Wxserviceinfo();
+            String sd="开始发送消息准备";
+            info.Wxserviceinfopost(sd);
+
+        }
+
+
+        return toAjax(jilu);
+
+
+//       获得uui
+
+//        SysManData sysManData1=new SysManData();
+//        sysManData1=sysManData;
+//        System.out.println("接受到请求");
+//       String uuid= IdUtils.randomUUID();
+//       String dateTime= DateUtils.dateTime();
+//       StringBuilder stringBuilder=new StringBuilder();
+//       stringBuilder.append(dateTime);
+//       stringBuilder.append(uuid);
+        //自动添加递交订单
+//       sysManData.setOrderId(String.valueOf(stringBuilder));
+//       System.out.println("请求成功");
+
+//        return toAjax(sysManDataService.updateSysManData(sysManData));
+//        return "街道请求，返回测试";
+
+
+    }
+
 }
+
+
+
+
+

@@ -66,7 +66,7 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="成本中心" prop="costcenter">
+      <!--    <el-form-item label="成本中心" prop="costcenter">
         <el-input
           v-model="queryParams.costcenter"
           placeholder="请输入成本中心"
@@ -93,6 +93,7 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+      -->
       <el-form-item label="财务确认" prop="offFico">
         <el-input
           v-model="queryParams.offFico"
@@ -111,7 +112,7 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="备用1" prop="beiyong1">
+    <!--  <el-form-item label="备用1" prop="beiyong1">
         <el-input
           v-model="queryParams.beiyong1"
           placeholder="请输入备用1"
@@ -129,6 +130,7 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+      -->
       <el-form-item>
         <el-button type="cyan" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -174,6 +176,16 @@
           v-hasPermi="['system:man_data:export']"
         >导出</el-button>
       </el-col>
+         <el-col :span="1.5">
+        <el-button
+          type="success"
+          icon="el-icon-check"
+          size="mini"
+          :disabled="multiple"
+          @click="updateuuuid"
+          v-hasPermi="['system:man_data:edit']"
+        >提交申请公司代码|门店编码</el-button>
+      </el-col>
 	  <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
@@ -192,7 +204,7 @@
       <el-table-column label="门店地址" align="center" prop="shopAddress" />
       <el-table-column label="财务确认" align="center" prop="offFico" />
       <el-table-column label="it确认" align="center" prop="offIt" />
-      <el-table-column label="备用1" align="center" prop="beiyong1" />
+      <el-table-column label="门店编码" align="center" prop="beiyong1" />
       <el-table-column label="备用2" align="center" prop="beiyong2" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -225,12 +237,15 @@
     <!-- 添加或修改man_data对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="创建订单" prop="orderId">
+       <!-- <el-form-item label="创建订单" prop="orderId">
           <el-input v-model="form.orderId" placeholder="请输入创建订单" />
         </el-form-item>
+        -->
+        <!--
         <el-form-item label="公司代码" prop="offCode">
           <el-input v-model="form.offCode" placeholder="请输入公司代码" />
         </el-form-item>
+        -->
         <el-form-item label="公司名称" prop="offName">
           <el-input v-model="form.offName" placeholder="请输入公司名称" />
         </el-form-item>
@@ -260,27 +275,32 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="成本中心" prop="costcenter">
+      <!--   <el-form-item label="成本中心" prop="costcenter">
           <el-input v-model="form.costcenter" placeholder="请输入成本中心" />
         </el-form-item>
         <el-form-item label="利润中心" prop="profitcenter">
           <el-input v-model="form.profitcenter" placeholder="请输入利润中心" />
         </el-form-item>
+        -->
         <el-form-item label="门店地址" prop="shopAddress">
           <el-input v-model="form.shopAddress" placeholder="请输入门店地址" />
         </el-form-item>
-        <el-form-item label="财务确认" prop="offFico">
+         <!--
+         <el-form-item label="财务确认" prop="offFico">
           <el-input v-model="form.offFico" placeholder="请输入财务确认" />
         </el-form-item>
-        <el-form-item label="it确认" prop="offIt">
+       <el-form-item label="it确认" prop="offIt">
           <el-input v-model="form.offIt" placeholder="请输入it确认" />
         </el-form-item>
-        <el-form-item label="备用1" prop="beiyong1">
+         -->
+            <!--
+        <el-form-item label="门店编码" prop="beiyong1">
           <el-input v-model="form.beiyong1" placeholder="请输入备用1" />
         </el-form-item>
         <el-form-item label="备用2" prop="beiyong2">
           <el-input v-model="form.beiyong2" placeholder="请输入备用2" />
         </el-form-item>
+        -->
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button type="primary" @click="submitForm">确 定</el-button>
@@ -291,7 +311,7 @@
 </template>
 
 <script>
-import { listMan_data, getMan_data, delMan_data, addMan_data, updateMan_data, exportMan_data } from "@/api/system/man_data";
+import { listMan_data, getMan_data, delMan_data, addMan_data, updateMan_data, exportMan_data,updateuuid } from "@/api/system/man_data";
 
 export default {
   name: "Man_data",
@@ -448,13 +468,34 @@ export default {
               this.open = false;
               this.getList();
             });
-          }
+          } 
         }
       });
     },
+    //递交操作
+    updateuuuid(row){
+      // paramsdj:{
+      //   arr:[]
+      // }
+      
+      const uuid=row.id|| this.ids;
+      this.$confirm('是否确认递交主数据内容'+uuid+'"的主数据？ 此次递交将会通过微信发送给 财务和it部门提醒"',"在次提醒",{
+        confirmButtonText:"确定",
+        cancelButtonText:"取消",
+        type:"warning",
+        
+      }).then(function(){
+        console.log("执行递交业务")
+        return updateuuid(uuid);
+      }).then(()=>{
+        this.getList();
+        this.msgSuccess("递交成功");
+      })
+    },
+
     /** 删除按钮操作 */
     handleDelete(row) {
-      const ids = row.id || this.ids;
+      const ids = row.id|| this.ids;
       this.$confirm('是否确认删除man_data编号为"' + ids + '"的数据项?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
