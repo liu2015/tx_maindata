@@ -164,6 +164,7 @@ public class SysManDataController extends BaseController
             SysManListData listdata=new SysManListData();
             listdata.setOrderId(String.valueOf(stringBuilder));
             listdata.setGu1(text_list);
+            listdata.setGu2("3");
 
 
             sysManListDataService.insertSysManListData(listdata);

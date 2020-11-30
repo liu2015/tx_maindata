@@ -23,14 +23,27 @@
 <!-- 
 实现遍历内容
 -->
-<el-steps :active="2" align-center>
-  <el-step title="创建的单号" description=row.id></el-step>
+<ul>
+<li v-for="item in sys_man_list_dataList">
+<!-- {{item.orderId}}
+-->
+<el-steps :active=item.gu2 align-center>
+<!-- <el-steps :active=item.gu2 align-center> -->
+  <el-step title="创建的单号" :description=item.orderId></el-step>
 
-  <el-step title="步骤1" description="这是一段很长很长很长的描述性文字"></el-step>
-  <el-step title="步骤2" description="这是一段很长很长很长的描述性文字"></el-step>
-  <el-step title="步骤3" description="这是一段很长很长很长的描述性文字"></el-step>
-  <el-step title="步骤4" description="这是一段很长很长很长的描述性文字"></el-step>
+  <el-step title="财务编码确认" :description=item.ficoConfi></el-step>
+  <el-step title="IT门店确认" :description=item.itConfi></el-step>
+  <el-step title="物料确认" :description=item.billConfi></el-step>
+  <el-step title="pos确认" :description=item.posConfi></el-step>
+  <el-step title="供货价确认" :description=item.supplyPrice></el-step>
+  <el-step title="零售价确认" :description=item.retailPrice></el-step>
+  <el-step title="主数据确认" :description=item.manDataone></el-step>
 </el-steps>
+
+
+</li>
+</ul>
+
 
      <!--
       </el-form-item>
@@ -485,3 +498,11 @@ export default {
   }
 };
 </script>
+
+<style>
+ul li{
+
+list-style: none;
+
+}
+</style>

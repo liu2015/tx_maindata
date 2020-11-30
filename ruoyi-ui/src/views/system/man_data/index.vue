@@ -196,7 +196,23 @@
       <el-table-column label="序列" align="center" prop="id" />
       <el-table-column label="创建订单" align="center" prop="orderId" />
       <el-table-column label="公司代码" align="center" prop="offCode" />
-      <el-table-column label="公司名称" align="center" prop="offName" />
+      
+      <!-- 实现参数参数修改成为一个双向绑定值  -->
+      <el-table-column label="公司名称" width="150" align="center" prop="offName" >
+    
+    <template slot-scope="scope">
+
+      <el-input v-model="scope.row.offName" placeholder="请输入零售价" />       
+
+    </template>
+
+    <!--
+       <el-button>按钮</el-button>
+      <el-input v-model="man_dataList.offName" >
+      -->
+      </el-table-column>
+
+
       <el-table-column label="核算方式" align="center" prop="offAccanting" :formatter="offAccantingFormat" />
       <el-table-column label="门店信息" align="center" prop="shopCode" />
       <el-table-column label="门店名称" align="center" prop="shopName" />

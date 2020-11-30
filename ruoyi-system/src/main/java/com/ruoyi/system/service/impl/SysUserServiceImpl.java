@@ -410,6 +410,8 @@ public class SysUserServiceImpl implements ISysUserService
         String password = configService.selectConfigByKey("sys.user.initPassword");
         for (SysUser user : userList)
         {
+
+            System.out.println("这是导入的user"+user.toString());
             try
             {
                 // 验证是否存在这个用户
@@ -419,6 +421,8 @@ public class SysUserServiceImpl implements ISysUserService
                     user.setPassword(SecurityUtils.encryptPassword(password));
                     user.setCreateBy(operName);
                     this.insertUser(user);
+
+                    System.out.println("这是导入的user"+user.toString());
                     successNum++;
                     successMsg.append("<br/>" + successNum + "、账号 " + user.getUserName() + " 导入成功");
                 }
