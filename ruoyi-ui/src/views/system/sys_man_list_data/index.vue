@@ -10,7 +10,7 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="用户权限申请" prop="suerAuthority">
+     <!-- <el-form-item label="用户权限申请" prop="suerAuthority">
         <el-input
           v-model="queryParams.suerAuthority"
           placeholder="请输入用户权限申请"
@@ -18,6 +18,20 @@
           size="small"
           @keyup.enter.native="handleQuery"
         />
+        -->
+
+<!-- 
+实现遍历内容
+-->
+<el-steps :active="2" align-center>
+  <el-step title="创建的单号" description=row.id></el-step>
+
+  <el-step title="步骤1" description="这是一段很长很长很长的描述性文字"></el-step>
+  <el-step title="步骤2" description="这是一段很长很长很长的描述性文字"></el-step>
+  <el-step title="步骤3" description="这是一段很长很长很长的描述性文字"></el-step>
+  <el-step title="步骤4" description="这是一段很长很长很长的描述性文字"></el-step>
+</el-steps>
+
      <!--
       </el-form-item>
       <el-form-item label="财务确认" prop="ficoConfi">
