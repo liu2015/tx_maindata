@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysManListDataMapper">
+    
+    <resultMap type="SysManListData" id="SysManListDataResult">
+        <result property="id"    column="id"    />
+        <result property="orderId"    column="order_id"    />
+        <result property="suerAuthority"    column="suer_authority"    />
+        <result property="ficoConfi"    column="fico_confi"    />
+        <result property="itConfi"    column="it_confi"    />
+        <result property="billConfi"    column="bill_confi"    />
+        <result property="posConfi"    column="pos_confi"    />
+        <result property="supplyPrice"    column="supply_price"    />
+        <result property="retailPrice"    column="retail_price"    />
+        <result property="manDataone"    column="man_dataone"    />
+        <result property="manDatatwo"    column="man_datatwo"    />
+        <result property="gu1"    column="gu1"    />
+        <result property="gu2"    column="gu2"    />
+        <result property="gu3"    column="gu3"    />
+        <result property="gu4"    column="gu4"    />
+        <result property="gu5"    column="gu5"    />
+    </resultMap>
+
+    <sql id="selectSysManListDataVo">
+        select id, order_id, suer_authority, fico_confi, it_confi, bill_confi, pos_confi, supply_price, retail_price, man_dataone, man_datatwo, gu1, gu2, gu3, gu4, gu5 from sys_man_list_data
+    </sql>
+
+    <select id="selectSysManListDataList" parameterType="SysManListData" resultMap="SysManListDataResult">
+        <include refid="selectSysManListDataVo"/>
+        <where>  
+            <if test="orderId != null  and orderId != ''"> and order_id = #{orderId}</if>
+            <if test="suerAuthority != null  and suerAuthority != ''"> and suer_authority = #{suerAuthority}</if>
+            <if test="ficoConfi != null  and ficoConfi != ''"> and fico_confi = #{ficoConfi}</if>
+            <if test="itConfi != null  and itConfi != ''"> and it_confi = #{itConfi}</if>
+            <if test="billConfi != null  and billConfi != ''"> and bill_confi = #{billConfi}</if>
+            <if test="posConfi != null  and posConfi != ''"> and pos_confi = #{posConfi}</if>
+            <if test="supplyPrice != null  and supplyPrice != ''"> and supply_price = #{supplyPrice}</if>
+            <if test="retailPrice != null  and retailPrice != ''"> and retail_price = #{retailPrice}</if>
+            <if test="manDataone != null  and manDataone != ''"> and man_dataone = #{manDataone}</if>
+            <if test="manDatatwo != null  and manDatatwo != ''"> and man_datatwo = #{manDatatwo}</if>
+            <if test="gu1 != null  and gu1 != ''"> and gu1 = #{gu1}</if>
+            <if test="gu2 != null  and gu2 != ''"> and gu2 = #{gu2}</if>
+            <if test="gu3 != null  and gu3 != ''"> and gu3 = #{gu3}</if>
+            <if test="gu4 != null  and gu4 != ''"> and gu4 = #{gu4}</if>
+            <if test="gu5 != null  and gu5 != ''"> and gu5 = #{gu5}</if>
+        </where>
+    </select>
+    
+    <select id="selectSysManListDataById" parameterType="Long" resultMap="SysManListDataResult">
+        <include refid="selectSysManListDataVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSysManListData" parameterType="SysManListData" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_man_list_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">order_id,</if>
+            <if test="suerAuthority != null">suer_authority,</if>
+            <if test="ficoConfi != null">fico_confi,</if>
+            <if test="itConfi != null">it_confi,</if>
+            <if test="billConfi != null">bill_confi,</if>
+            <if test="posConfi != null">pos_confi,</if>
+            <if test="supplyPrice != null">supply_price,</if>
+            <if test="retailPrice != null">retail_price,</if>
+            <if test="manDataone != null">man_dataone,</if>
+            <if test="manDatatwo != null">man_datatwo,</if>
+            <if test="gu1 != null">gu1,</if>
+            <if test="gu2 != null">gu2,</if>
+            <if test="gu3 != null">gu3,</if>
+            <if test="gu4 != null">gu4,</if>
+            <if test="gu5 != null">gu5,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">#{orderId},</if>
+            <if test="suerAuthority != null">#{suerAuthority},</if>
+            <if test="ficoConfi != null">#{ficoConfi},</if>
+            <if test="itConfi != null">#{itConfi},</if>
+            <if test="billConfi != null">#{billConfi},</if>
+            <if test="posConfi != null">#{posConfi},</if>
+            <if test="supplyPrice != null">#{supplyPrice},</if>
+            <if test="retailPrice != null">#{retailPrice},</if>
+            <if test="manDataone != null">#{manDataone},</if>
+            <if test="manDatatwo != null">#{manDatatwo},</if>
+            <if test="gu1 != null">#{gu1},</if>
+            <if test="gu2 != null">#{gu2},</if>
+            <if test="gu3 != null">#{gu3},</if>
+            <if test="gu4 != null">#{gu4},</if>
+            <if test="gu5 != null">#{gu5},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysManListData" parameterType="SysManListData">
+        update sys_man_list_data
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="orderId != null">order_id = #{orderId},</if>
+            <if test="suerAuthority != null">suer_authority = #{suerAuthority},</if>
+            <if test="ficoConfi != null">fico_confi = #{ficoConfi},</if>
+            <if test="itConfi != null">it_confi = #{itConfi},</if>
+            <if test="billConfi != null">bill_confi = #{billConfi},</if>
+            <if test="posConfi != null">pos_confi = #{posConfi},</if>
+            <if test="supplyPrice != null">supply_price = #{supplyPrice},</if>
+            <if test="retailPrice != null">retail_price = #{retailPrice},</if>
+            <if test="manDataone != null">man_dataone = #{manDataone},</if>
+            <if test="manDatatwo != null">man_datatwo = #{manDatatwo},</if>
+            <if test="gu1 != null">gu1 = #{gu1},</if>
+            <if test="gu2 != null">gu2 = #{gu2},</if>
+            <if test="gu3 != null">gu3 = #{gu3},</if>
+            <if test="gu4 != null">gu4 = #{gu4},</if>
+            <if test="gu5 != null">gu5 = #{gu5},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysManListDataById" parameterType="Long">
+        delete from sys_man_list_data where id = #{id}
+    </delete>
+
+    <delete id="deleteSysManListDataByIds" parameterType="String">
+        delete from sys_man_list_data where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>
