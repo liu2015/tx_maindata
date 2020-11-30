@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.common.utils.uuid.IdUtils;
+import com.ruoyi.system.domain.SysManListData;
+import com.ruoyi.system.service.ISysManListDataService;
 import com.ruoyi.system.wxmessage.service.Wxservice;
 import com.ruoyi.system.wxmessage.service.Wxserviceinfo;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -37,6 +39,8 @@ public class SysManDataController extends BaseController
 {
     @Autowired
     private ISysManDataService sysManDataService;
+    @Autowired
+    private ISysManListDataService sysManListDataService;
 
     /**
      * 查询man_data列表
@@ -111,6 +115,7 @@ public class SysManDataController extends BaseController
      *  递交操作，递交更新，然后生成 订单id
      *  单个递交
      *  id组 时间+uuid
+     *  增加一个 状态写入到man_list 表内更新状态为已经递交 状态，并且记录递交几个店
      */
     @PreAuthorize("@ss.hasPermi('system:man_data:edit')")
     @Log(title = "man_data", businessType = BusinessType.UPDATE)
@@ -153,6 +158,16 @@ public class SysManDataController extends BaseController
             Wxserviceinfo info=new Wxserviceinfo();
             String sd="开始发送消息准备";
             info.Wxserviceinfopost(sd);
+
+//            递交到信息到main_list
+            String text_list="申请人确认总计"+jilu+"数据";
+            SysManListData listdata=new SysManListData();
+            listdata.setOrderId(String.valueOf(stringBuilder));
+            listdata.setGu1(text_list);
+
+
+            sysManListDataService.insertSysManListData(listdata);
+
 
         }
 
