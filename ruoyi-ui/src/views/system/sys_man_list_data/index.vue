@@ -9,6 +9,7 @@
           size="small"
           @keyup.enter.native="handleQuery"
         />
+
       </el-form-item>
      <!-- <el-form-item label="用户权限申请" prop="suerAuthority">
         <el-input
@@ -23,12 +24,19 @@
 <!-- 
 实现遍历内容
 -->
-<ul>
-<li v-for="item in sys_man_list_dataList">
-<!-- {{item.orderId}}
+<!--
+<el-row>
+
+<el-col v-for="item in sys_man_list_dataList">
+
 -->
-<el-steps :active=item.gu2 align-center>
-<!-- <el-steps :active=item.gu2 align-center> -->
+<!-- {{item.orderId}}
+<li v-for="item in sys_man_list_dataList">
+-->
+<el-row>
+<el-col v-for="item in sys_man_list_dataList"  :key="item.orderId">
+
+<el-steps :active=Number(item.gu2) align-center>
   <el-step title="创建的单号" :description=item.orderId></el-step>
 
   <el-step title="财务编码确认" :description=item.ficoConfi></el-step>
@@ -40,13 +48,17 @@
   <el-step title="主数据确认" :description=item.manDataone></el-step>
 </el-steps>
 
+</el-col>
+</el-row>
 
-</li>
-</ul>
+<!--
+</el-col>
 
+</el-row>
 
-     <!--
-      </el-form-item>
+-->
+
+      <!-- 
       <el-form-item label="财务确认" prop="ficoConfi">
         <el-input
           v-model="queryParams.ficoConfi"
@@ -163,8 +175,9 @@
           size="small"
           @keyup.enter.native="handleQuery"
         />
-        -->
+       
       </el-form-item>
+      -->
       <el-form-item>
         <el-button type="cyan" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -498,11 +511,13 @@ export default {
   }
 };
 </script>
+<!--
+// <style>
+// ul li{
 
-<style>
-ul li{
+// list-style: none;
 
-list-style: none;
+// }
+// </style>
 
-}
-</style>
+-->
