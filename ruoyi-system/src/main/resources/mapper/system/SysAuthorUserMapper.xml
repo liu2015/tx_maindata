@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysAuthorUserMapper">
+    
+    <resultMap type="SysAuthorUser" id="SysAuthorUserResult">
+        <result property="id"    column="id"    />
+        <result property="orderid"    column="orderid"    />
+        <result property="region"    column="region"    />
+        <result property="pstName"    column="pst_name"    />
+        <result property="nameUser"    column="name_user"    />
+        <result property="nameCode"    column="name_code"    />
+        <result property="offCode"    column="off_code"    />
+        <result property="offAccess"    column="off_access"    />
+        <result property="posText"    column="pos_text"    />
+        <result property="posNames"    column="pos_names"    />
+        <result property="posShop"    column="pos_shop"    />
+        <result property="ztAuthor"    column="zt_author"    />
+        <result property="beizhu"    column="beizhu"    />
+        <result property="groupText"    column="group_text"    />
+        <result property="groupName"    column="group_name"    />
+        <result property="gp1"    column="gp1"    />
+        <result property="gp2"    column="gp2"    />
+        <result property="gp3"    column="gp3"    />
+        <result property="gp4"    column="gp4"    />
+        <result property="gp5"    column="gp5"    />
+    </resultMap>
+
+    <sql id="selectSysAuthorUserVo">
+        select id, orderid, region, pst_name, name_user, name_code, off_code, off_access, pos_text, pos_names, pos_shop, zt_author, beizhu, group_text, group_name, gp1, gp2, gp3, gp4, gp5 from sys_author_user
+    </sql>
+
+    <select id="selectSysAuthorUserList" parameterType="SysAuthorUser" resultMap="SysAuthorUserResult">
+        <include refid="selectSysAuthorUserVo"/>
+        <where>  
+            <if test="orderid != null  and orderid != ''"> and orderid = #{orderid}</if>
+            <if test="region != null  and region != ''"> and region = #{region}</if>
+            <if test="pstName != null  and pstName != ''"> and pst_name like concat('%', #{pstName}, '%')</if>
+            <if test="nameUser != null  and nameUser != ''"> and name_user = #{nameUser}</if>
+            <if test="nameCode != null  and nameCode != ''"> and name_code = #{nameCode}</if>
+            <if test="offCode != null  and offCode != ''"> and off_code = #{offCode}</if>
+            <if test="offAccess != null  and offAccess != ''"> and off_access = #{offAccess}</if>
+            <if test="posText != null  and posText != ''"> and pos_text = #{posText}</if>
+            <if test="posNames != null  and posNames != ''"> and pos_names = #{posNames}</if>
+            <if test="posShop != null  and posShop != ''"> and pos_shop = #{posShop}</if>
+            <if test="ztAuthor != null  and ztAuthor != ''"> and zt_author = #{ztAuthor}</if>
+            <if test="beizhu != null  and beizhu != ''"> and beizhu = #{beizhu}</if>
+            <if test="groupText != null  and groupText != ''"> and group_text = #{groupText}</if>
+            <if test="groupName != null  and groupName != ''"> and group_name like concat('%', #{groupName}, '%')</if>
+            <if test="gp1 != null  and gp1 != ''"> and gp1 = #{gp1}</if>
+            <if test="gp2 != null  and gp2 != ''"> and gp2 = #{gp2}</if>
+            <if test="gp3 != null  and gp3 != ''"> and gp3 = #{gp3}</if>
+            <if test="gp4 != null  and gp4 != ''"> and gp4 = #{gp4}</if>
+            <if test="gp5 != null  and gp5 != ''"> and gp5 = #{gp5}</if>
+        </where>
+    </select>
+    
+    <select id="selectSysAuthorUserById" parameterType="Long" resultMap="SysAuthorUserResult">
+        <include refid="selectSysAuthorUserVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSysAuthorUser" parameterType="SysAuthorUser" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_author_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderid != null">orderid,</if>
+            <if test="region != null">region,</if>
+            <if test="pstName != null">pst_name,</if>
+            <if test="nameUser != null">name_user,</if>
+            <if test="nameCode != null">name_code,</if>
+            <if test="offCode != null">off_code,</if>
+            <if test="offAccess != null">off_access,</if>
+            <if test="posText != null">pos_text,</if>
+            <if test="posNames != null">pos_names,</if>
+            <if test="posShop != null">pos_shop,</if>
+            <if test="ztAuthor != null">zt_author,</if>
+            <if test="beizhu != null">beizhu,</if>
+            <if test="groupText != null">group_text,</if>
+            <if test="groupName != null">group_name,</if>
+            <if test="gp1 != null">gp1,</if>
+            <if test="gp2 != null">gp2,</if>
+            <if test="gp3 != null">gp3,</if>
+            <if test="gp4 != null">gp4,</if>
+            <if test="gp5 != null">gp5,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderid != null">#{orderid},</if>
+            <if test="region != null">#{region},</if>
+            <if test="pstName != null">#{pstName},</if>
+            <if test="nameUser != null">#{nameUser},</if>
+            <if test="nameCode != null">#{nameCode},</if>
+            <if test="offCode != null">#{offCode},</if>
+            <if test="offAccess != null">#{offAccess},</if>
+            <if test="posText != null">#{posText},</if>
+            <if test="posNames != null">#{posNames},</if>
+            <if test="posShop != null">#{posShop},</if>
+            <if test="ztAuthor != null">#{ztAuthor},</if>
+            <if test="beizhu != null">#{beizhu},</if>
+            <if test="groupText != null">#{groupText},</if>
+            <if test="groupName != null">#{groupName},</if>
+            <if test="gp1 != null">#{gp1},</if>
+            <if test="gp2 != null">#{gp2},</if>
+            <if test="gp3 != null">#{gp3},</if>
+            <if test="gp4 != null">#{gp4},</if>
+            <if test="gp5 != null">#{gp5},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysAuthorUser" parameterType="SysAuthorUser">
+        update sys_author_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="orderid != null">orderid = #{orderid},</if>
+            <if test="region != null">region = #{region},</if>
+            <if test="pstName != null">pst_name = #{pstName},</if>
+            <if test="nameUser != null">name_user = #{nameUser},</if>
+            <if test="nameCode != null">name_code = #{nameCode},</if>
+            <if test="offCode != null">off_code = #{offCode},</if>
+            <if test="offAccess != null">off_access = #{offAccess},</if>
+            <if test="posText != null">pos_text = #{posText},</if>
+            <if test="posNames != null">pos_names = #{posNames},</if>
+            <if test="posShop != null">pos_shop = #{posShop},</if>
+            <if test="ztAuthor != null">zt_author = #{ztAuthor},</if>
+            <if test="beizhu != null">beizhu = #{beizhu},</if>
+            <if test="groupText != null">group_text = #{groupText},</if>
+            <if test="groupName != null">group_name = #{groupName},</if>
+            <if test="gp1 != null">gp1 = #{gp1},</if>
+            <if test="gp2 != null">gp2 = #{gp2},</if>
+            <if test="gp3 != null">gp3 = #{gp3},</if>
+            <if test="gp4 != null">gp4 = #{gp4},</if>
+            <if test="gp5 != null">gp5 = #{gp5},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysAuthorUserById" parameterType="Long">
+        delete from sys_author_user where id = #{id}
+    </delete>
+
+    <delete id="deleteSysAuthorUserByIds" parameterType="String">
+        delete from sys_author_user where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>
