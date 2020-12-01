@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysAppmanidMapper">
+    
+    <resultMap type="SysAppmanid" id="SysAppmanidResult">
+        <result property="id"    column="id"    />
+        <result property="typeScene"    column="type_scene"    />
+        <result property="corpid"    column="corpid"    />
+        <result property="suerid"    column="suerid"    />
+        <result property="dept"    column="dept"    />
+        <result property="tagid"    column="tagid"    />
+        <result property="agentid"    column="agentid"    />
+        <result property="secret"    column="secret"    />
+        <result property="accessToken"    column="access_token"    />
+        <result property="url"    column="url"    />
+        <result property="guard1"    column="guard1"    />
+        <result property="guard2"    column="guard2"    />
+        <result property="guard3"    column="guard3"    />
+    </resultMap>
+
+    <sql id="selectSysAppmanidVo">
+        select id, type_scene, corpid, suerid, dept, tagid, agentid, secret, access_token, url, guard1, guard2, guard3 from sys_appmanid
+    </sql>
+
+    <select id="selectSysAppmanidList" parameterType="SysAppmanid" resultMap="SysAppmanidResult">
+        <include refid="selectSysAppmanidVo"/>
+        <where>  
+            <if test="typeScene != null  and typeScene != ''"> and type_scene = #{typeScene}</if>
+            <if test="corpid != null  and corpid != ''"> and corpid = #{corpid}</if>
+            <if test="suerid != null  and suerid != ''"> and suerid = #{suerid}</if>
+            <if test="dept != null  and dept != ''"> and dept = #{dept}</if>
+            <if test="tagid != null  and tagid != ''"> and tagid = #{tagid}</if>
+            <if test="agentid != null  and agentid != ''"> and agentid = #{agentid}</if>
+            <if test="secret != null  and secret != ''"> and secret = #{secret}</if>
+            <if test="accessToken != null  and accessToken != ''"> and access_token = #{accessToken}</if>
+            <if test="url != null  and url != ''"> and url = #{url}</if>
+            <if test="guard1 != null  and guard1 != ''"> and guard1 = #{guard1}</if>
+            <if test="guard2 != null  and guard2 != ''"> and guard2 = #{guard2}</if>
+            <if test="guard3 != null  and guard3 != ''"> and guard3 = #{guard3}</if>
+        </where>
+    </select>
+    
+    <select id="selectSysAppmanidById" parameterType="Long" resultMap="SysAppmanidResult">
+        <include refid="selectSysAppmanidVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSysAppmanid" parameterType="SysAppmanid" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_appmanid
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="typeScene != null">type_scene,</if>
+            <if test="corpid != null">corpid,</if>
+            <if test="suerid != null">suerid,</if>
+            <if test="dept != null">dept,</if>
+            <if test="tagid != null">tagid,</if>
+            <if test="agentid != null">agentid,</if>
+            <if test="secret != null">secret,</if>
+            <if test="accessToken != null">access_token,</if>
+            <if test="url != null">url,</if>
+            <if test="guard1 != null">guard1,</if>
+            <if test="guard2 != null">guard2,</if>
+            <if test="guard3 != null">guard3,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="typeScene != null">#{typeScene},</if>
+            <if test="corpid != null">#{corpid},</if>
+            <if test="suerid != null">#{suerid},</if>
+            <if test="dept != null">#{dept},</if>
+            <if test="tagid != null">#{tagid},</if>
+            <if test="agentid != null">#{agentid},</if>
+            <if test="secret != null">#{secret},</if>
+            <if test="accessToken != null">#{accessToken},</if>
+            <if test="url != null">#{url},</if>
+            <if test="guard1 != null">#{guard1},</if>
+            <if test="guard2 != null">#{guard2},</if>
+            <if test="guard3 != null">#{guard3},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysAppmanid" parameterType="SysAppmanid">
+        update sys_appmanid
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="typeScene != null">type_scene = #{typeScene},</if>
+            <if test="corpid != null">corpid = #{corpid},</if>
+            <if test="suerid != null">suerid = #{suerid},</if>
+            <if test="dept != null">dept = #{dept},</if>
+            <if test="tagid != null">tagid = #{tagid},</if>
+            <if test="agentid != null">agentid = #{agentid},</if>
+            <if test="secret != null">secret = #{secret},</if>
+            <if test="accessToken != null">access_token = #{accessToken},</if>
+            <if test="url != null">url = #{url},</if>
+            <if test="guard1 != null">guard1 = #{guard1},</if>
+            <if test="guard2 != null">guard2 = #{guard2},</if>
+            <if test="guard3 != null">guard3 = #{guard3},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysAppmanidById" parameterType="Long">
+        delete from sys_appmanid where id = #{id}
+    </delete>
+
+    <delete id="deleteSysAppmanidByIds" parameterType="String">
+        delete from sys_appmanid where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>
