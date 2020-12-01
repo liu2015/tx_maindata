@@ -199,10 +199,11 @@
       
       <!-- 实现参数参数修改成为一个双向绑定值  -->
       <el-table-column label="公司名称" width="150" align="center" prop="offName" >
-    
+    <!--
     <template slot-scope="scope">
-
-      <el-input v-model="scope.row.offName" placeholder="请输入零售价" />       
+-->
+  <template v-slot:default="scope">
+      <el-input v-model:value="scope.row.offName" placeholder="请输入零售价" />       
 
     </template>
 

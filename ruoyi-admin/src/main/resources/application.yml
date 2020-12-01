@@ -60,7 +60,7 @@ spring:
   redis:
     # 地址
 #    host: localhost
-    host: 172.30.30.225
+    host: localhost
 
     # 端口，默认为6379
     port: 6379
