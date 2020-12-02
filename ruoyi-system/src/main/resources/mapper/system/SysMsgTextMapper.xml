@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysMsgTextMapper">
+    
+    <resultMap type="SysMsgText" id="SysMsgTextResult">
+        <result property="id"    column="id"    />
+        <result property="yeuwType"    column="yeuw_type"    />
+        <result property="touser"    column="touser"    />
+        <result property="toparty"    column="toparty"    />
+        <result property="totag"    column="totag"    />
+        <result property="msgtype"    column="msgtype"    />
+        <result property="agentid"    column="agentid"    />
+        <result property="text"    column="text"    />
+        <result property="safe"    column="safe"    />
+        <result property="enableIdTrans"    column="enable_id_trans"    />
+        <result property="enableDuplicateCheck"    column="enable_duplicate_check"    />
+        <result property="duplicateCheckInterval"    column="duplicate_check_interval"    />
+        <result property="url"    column="url"    />
+        <result property="spare1"    column="spare1"    />
+    </resultMap>
+
+    <sql id="selectSysMsgTextVo">
+        select id, yeuw_type, touser, toparty, totag, msgtype, agentid, text, safe, enable_id_trans, enable_duplicate_check, duplicate_check_interval, url, spare1 from sys_msg_text
+    </sql>
+
+    <select id="selectSysMsgTextList" parameterType="SysMsgText" resultMap="SysMsgTextResult">
+        <include refid="selectSysMsgTextVo"/>
+        <where>  
+            <if test="yeuwType != null  and yeuwType != ''"> and yeuw_type = #{yeuwType}</if>
+            <if test="touser != null  and touser != ''"> and touser = #{touser}</if>
+            <if test="toparty != null  and toparty != ''"> and toparty = #{toparty}</if>
+            <if test="totag != null  and totag != ''"> and totag = #{totag}</if>
+            <if test="msgtype != null  and msgtype != ''"> and msgtype = #{msgtype}</if>
+            <if test="agentid != null "> and agentid = #{agentid}</if>
+            <if test="text != null  and text != ''"> and text = #{text}</if>
+            <if test="safe != null  and safe != ''"> and safe = #{safe}</if>
+            <if test="enableIdTrans != null  and enableIdTrans != ''"> and enable_id_trans = #{enableIdTrans}</if>
+            <if test="enableDuplicateCheck != null  and enableDuplicateCheck != ''"> and enable_duplicate_check = #{enableDuplicateCheck}</if>
+            <if test="duplicateCheckInterval != null  and duplicateCheckInterval != ''"> and duplicate_check_interval = #{duplicateCheckInterval}</if>
+            <if test="url != null  and url != ''"> and url = #{url}</if>
+            <if test="spare1 != null  and spare1 != ''"> and spare1 = #{spare1}</if>
+        </where>
+    </select>
+    
+    <select id="selectSysMsgTextById" parameterType="Long" resultMap="SysMsgTextResult">
+        <include refid="selectSysMsgTextVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSysMsgText" parameterType="SysMsgText" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_msg_text
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="yeuwType != null">yeuw_type,</if>
+            <if test="touser != null">touser,</if>
+            <if test="toparty != null">toparty,</if>
+            <if test="totag != null">totag,</if>
+            <if test="msgtype != null">msgtype,</if>
+            <if test="agentid != null">agentid,</if>
+            <if test="text != null">text,</if>
+            <if test="safe != null">safe,</if>
+            <if test="enableIdTrans != null">enable_id_trans,</if>
+            <if test="enableDuplicateCheck != null">enable_duplicate_check,</if>
+            <if test="duplicateCheckInterval != null">duplicate_check_interval,</if>
+            <if test="url != null">url,</if>
+            <if test="spare1 != null">spare1,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="yeuwType != null">#{yeuwType},</if>
+            <if test="touser != null">#{touser},</if>
+            <if test="toparty != null">#{toparty},</if>
+            <if test="totag != null">#{totag},</if>
+            <if test="msgtype != null">#{msgtype},</if>
+            <if test="agentid != null">#{agentid},</if>
+            <if test="text != null">#{text},</if>
+            <if test="safe != null">#{safe},</if>
+            <if test="enableIdTrans != null">#{enableIdTrans},</if>
+            <if test="enableDuplicateCheck != null">#{enableDuplicateCheck},</if>
+            <if test="duplicateCheckInterval != null">#{duplicateCheckInterval},</if>
+            <if test="url != null">#{url},</if>
+            <if test="spare1 != null">#{spare1},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysMsgText" parameterType="SysMsgText">
+        update sys_msg_text
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="yeuwType != null">yeuw_type = #{yeuwType},</if>
+            <if test="touser != null">touser = #{touser},</if>
+            <if test="toparty != null">toparty = #{toparty},</if>
+            <if test="totag != null">totag = #{totag},</if>
+            <if test="msgtype != null">msgtype = #{msgtype},</if>
+            <if test="agentid != null">agentid = #{agentid},</if>
+            <if test="text != null">text = #{text},</if>
+            <if test="safe != null">safe = #{safe},</if>
+            <if test="enableIdTrans != null">enable_id_trans = #{enableIdTrans},</if>
+            <if test="enableDuplicateCheck != null">enable_duplicate_check = #{enableDuplicateCheck},</if>
+            <if test="duplicateCheckInterval != null">duplicate_check_interval = #{duplicateCheckInterval},</if>
+            <if test="url != null">url = #{url},</if>
+            <if test="spare1 != null">spare1 = #{spare1},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysMsgTextById" parameterType="Long">
+        delete from sys_msg_text where id = #{id}
+    </delete>
+
+    <delete id="deleteSysMsgTextByIds" parameterType="String">
+        delete from sys_msg_text where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

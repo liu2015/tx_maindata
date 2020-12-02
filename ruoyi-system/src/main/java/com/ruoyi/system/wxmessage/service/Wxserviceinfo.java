@@ -3,30 +3,31 @@ package com.ruoyi.system.wxmessage.service;
 import com.alibaba.fastjson.JSONObject;
 import com.ruoyi.common.utils.http.HttpUtils;
 import com.ruoyi.system.wxmessage.WxVo;
+import org.omg.CORBA.PUBLIC_MEMBER;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
-
+@Component
 public class Wxserviceinfo {
+    @Autowired
+   public Wxserviceinfoimpl wxserviceinfoimpl;
+    @Autowired
+    public Wxservice wxservice;
 
     //    发送应用消息测试传入参数
     public void Wxserviceinfopost(String paramtest){
+//        初始化请求获得token
+        wxservice.Wxrequest();
+//        初始化请求获得token
+
         String dizhi="access_token="+ WxVo.getAccess_token();
         String messageurl="https://qyapi.weixin.qq.com/cgi-bin/message/send?"+dizhi;
         System.out.println(dizhi);
 
 //        这里可以改成传参的发送内容
-        String param="{\n" +
-                "   \"touser\" : \"LiuFuLing\",\n" +
-                "   \"msgtype\" : \"text\",\n" +
-                "   \"agentid\" : 1000002,\n" +
-                "   \"text\" : {\n" +
-                "       \"content\" : \"这是一段测试内容。\\n出发前可查看<a href=\\\"http://work.weixin.qq.com\\\">邮件中心视频实况</a>  换行内容。\"\n" +
-                "   },\n" +
-                "   \"safe\":0,\n" +
-                "   \"enable_id_trans\": 0,\n" +
-                "   \"enable_duplicate_check\": 0,\n" +
-                "   \"duplicate_check_interval\": 1800\n" +
-                "}";
+        String param= String.valueOf(wxserviceinfoimpl.Wxserviceinfo(paramtest));
 
         System.out.println("需要修改传入参数对应，现在只是演示"+paramtest);
 

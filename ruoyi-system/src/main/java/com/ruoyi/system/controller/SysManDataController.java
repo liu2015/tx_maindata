@@ -8,6 +8,7 @@ import com.ruoyi.system.domain.SysManListData;
 import com.ruoyi.system.service.ISysManListDataService;
 import com.ruoyi.system.wxmessage.service.Wxservice;
 import com.ruoyi.system.wxmessage.service.Wxserviceinfo;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,6 +42,11 @@ public class SysManDataController extends BaseController
     private ISysManDataService sysManDataService;
     @Autowired
     private ISysManListDataService sysManListDataService;
+    @Autowired
+    private  Wxservice wxservice;
+
+    @Autowired
+    private Wxserviceinfo wxserviceinfo;
 
     /**
      * 查询man_data列表
@@ -90,12 +96,37 @@ public class SysManDataController extends BaseController
 
     /**
      * 修改man_data
+     * 实现一个判断，若是it和财务都同意的话，发送一个推送请求
      */
     @PreAuthorize("@ss.hasPermi('system:man_data:edit')")
     @Log(title = "man_data", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody SysManData sysManData)
     {
+
+        System.out.println("...........................两个都同意");
+
+        try {
+            if (sysManData.getOffFico().equals("1") && sysManData.getOffIt().equals("1"))
+            {
+
+                System.out.println("..............出发更新推送条件.............两个都同意");
+                wxserviceinfo.Wxserviceinfopost("fico/ it 已经给出门店数值。请进行下一步操作哦");
+
+                //            消息传送到信息到main_list
+                SysManListData listdata=new SysManListData();
+
+                listdata.setOrderId(sysManData.getOrderId());
+                listdata.setGu1("两部门都同意");
+                listdata.setGu2("3");
+                sysManListDataService.insertSysManListData(listdata);
+
+            }
+
+
+        }catch (Exception e)
+        {System.out.println(e);}
+
         return toAjax(sysManDataService.updateSysManData(sysManData));
     }
 
@@ -152,19 +183,19 @@ public class SysManDataController extends BaseController
 //        后期通过调度 做获得token
         if (jilu>0)
         {
-            Wxservice wx=new Wxservice();
+            //           获得token
+            wxservice.Wxrequest();
 //           获得token
-            wx.Wxrequest();
-            Wxserviceinfo info=new Wxserviceinfo();
+//            Wxserviceinfo info=new Wxserviceinfo();
             String sd="开始发送消息准备";
-            info.Wxserviceinfopost(sd);
+            wxserviceinfo.Wxserviceinfopost(sd);
 
 //            递交到信息到main_list
             String text_list="申请人确认总计"+jilu+"数据";
             SysManListData listdata=new SysManListData();
             listdata.setOrderId(String.valueOf(stringBuilder));
             listdata.setGu1(text_list);
-            listdata.setGu2("3");
+            listdata.setGu2("1");
 
 
             sysManListDataService.insertSysManListData(listdata);

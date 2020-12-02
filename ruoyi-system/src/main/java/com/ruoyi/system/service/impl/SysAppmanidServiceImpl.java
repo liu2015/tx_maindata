@@ -14,7 +14,7 @@ import com.ruoyi.system.service.ISysAppmanidService;
  * @date 2020-12-01
  */
 @Service
-public class SysAppmanidServiceImpl implements ISysAppmanidService 
+public class SysAppmanidServiceImpl implements ISysAppmanidService
 {
     @Autowired
     private SysAppmanidMapper sysAppmanidMapper;
@@ -40,7 +40,17 @@ public class SysAppmanidServiceImpl implements ISysAppmanidService
     @Override
     public List<SysAppmanid> selectSysAppmanidList(SysAppmanid sysAppmanid)
     {
-        return sysAppmanidMapper.selectSysAppmanidList(sysAppmanid);
+        System.out.println("请求内容查询" + sysAppmanid.toString());
+
+//        为什么是空
+      List<SysAppmanid> lisdf=   sysAppmanidMapper.selectSysAppmanidList(sysAppmanid);
+
+        for (SysAppmanid dff: lisdf
+             ) {
+            System.out.println(dff);
+        }
+
+         return lisdf;
     }
 
     /**

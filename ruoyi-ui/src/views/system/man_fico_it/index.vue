@@ -84,6 +84,7 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+      <!--
       <el-form-item label="门店地址" prop="shopAddress">
         <el-input
           v-model="queryParams.shopAddress"
@@ -92,6 +93,7 @@
           size="small"
           @keyup.enter.native="handleQuery"
         />
+        -->
       </el-form-item>
       <el-form-item label="财务确认" prop="offFico">
         <el-select v-model="queryParams.offFico" placeholder="请选择财务确认" clearable size="small">
@@ -103,6 +105,7 @@
           />
         </el-select>
       </el-form-item>
+      <!--
       <el-form-item label="it确认" prop="offIt">
         <el-select v-model="queryParams.offIt" placeholder="请选择it确认" clearable size="small">
           <el-option
@@ -131,6 +134,7 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+      -->
       <el-form-item>
         <el-button type="cyan" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -156,8 +160,20 @@
           :disabled="single"
           @click="handleUpdate"
           v-hasPermi="['system:man_fico_it:edit']"
-        >赋予 代码</el-button>
+        >财务赋值代码</el-button>
       </el-col>
+
+      <el-col :span="1.5">
+        <el-button
+          type="success"
+          icon="el-icon-edit"
+          size="mini"
+          :disabled="single"
+          @click="handleUpdate1"
+          v-hasPermi="['system:man_fico_it:edit']"
+        >IT赋值代码</el-button>
+      </el-col>
+
      <!--<el-col :span="1.5">
         <el-button
           type="danger"
@@ -171,8 +187,6 @@
 
       -->
 
-
-      
       
       <el-col :span="1.5">
         <el-button
@@ -256,7 +270,50 @@
           </el-select>
         </el-form-item>
         <el-form-item label="it确认" prop="offIt">
-          <el-select v-model="form.offIt" placeholder="请选择it确认">
+          <el-select v-model="form.offIt" disabled placeholder="请选择it确认">
+            <el-option
+              v-for="dict in offItOptions"
+              :key="dict.dictValue"
+              :label="dict.dictLabel"
+              :value="dict.dictValue"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="门店编码" prop="beiyong1">
+          <el-input v-model="form.beiyong1" disabled placeholder="请输入门店编码" />
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="submitForm">确 定</el-button>
+        <el-button @click="cancel">取 消</el-button>
+      </div>
+    </el-dialog>
+
+
+        <!-- it唤醒弹窗 添加或修改man_fico_it对话框 -->
+    <el-dialog :title="title" :visible.sync="open1" width="500px" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+        <el-form-item label="公司代码" prop="offCode">
+          <el-input v-model="form.offCode" disabled placeholder="请输入公司代码" />
+        </el-form-item>
+        <el-form-item label="成本中心" prop="costcenter">
+          <el-input v-model="form.costcenter"  disabled placeholder="请输入成本中心" />
+        </el-form-item>
+        <el-form-item label="利润中心" prop="profitcenter">
+          <el-input v-model="form.profitcenter" disabled placeholder="请输入利润中心" />
+        </el-form-item>
+        <el-form-item label="财务确认" prop="offFico">
+          <el-select v-model="form.offFico" disabled  placeholder="请选择财务确认">
+            <el-option
+              v-for="dict in offFicoOptions"
+              :key="dict.dictValue"
+              :label="dict.dictLabel"
+              :value="dict.dictValue"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="it确认" prop="offIt">
+          <el-select v-model="form.offIt"  placeholder="请选择it确认">
             <el-option
               v-for="dict in offItOptions"
               :key="dict.dictValue"
@@ -395,6 +452,8 @@ export default {
     // 取消按钮
     cancel() {
       this.open = false;
+      this.open1 = false;
+
       this.reset();
     },
     // 表单重置
@@ -450,6 +509,17 @@ export default {
         this.title = "修改man_fico_it";
       });
     },
+    /** IT修改部分修改按钮操作 */
+    handleUpdate1(row) {
+      this.reset();
+      const id = row.id || this.ids
+      getMan_fico_it(id).then(response => {
+        this.form = response.data;
+        this.open1 = true;
+        this.title = "it 唤醒弹窗man_fico_it";
+      });
+    },
+
     /** 提交按钮 */
     submitForm() {
       this.$refs["form"].validate(valid => {
