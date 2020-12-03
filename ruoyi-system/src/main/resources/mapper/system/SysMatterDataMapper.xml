@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysMatterDataMapper">
+    
+    <resultMap type="SysMatterData" id="SysMatterDataResult">
+        <result property="id"    column="id"    />
+        <result property="orderId"    column="order_id"    />
+        <result property="region"    column="region"    />
+        <result property="organLevel"    column="organ_level"    />
+        <result property="sellDrgan"    column="sell_drgan"    />
+        <result property="matter"    column="matter"    />
+        <result property="matterDescribe"    column="matter_describe"    />
+        <result property="matterGroup"    column="matter_group"    />
+        <result property="status"    column="status"    />
+        <result property="guard1"    column="guard1"    />
+        <result property="guard2"    column="guard2"    />
+        <result property="guard3"    column="guard3"    />
+    </resultMap>
+
+    <sql id="selectSysMatterDataVo">
+        select id, order_id, region, organ_level, sell_drgan, matter, matter_describe, matter_group, status, guard1, guard2, guard3 from sys_matter_data
+    </sql>
+
+    <select id="selectSysMatterDataList" parameterType="SysMatterData" resultMap="SysMatterDataResult">
+        <include refid="selectSysMatterDataVo"/>
+        <where>  
+            <if test="orderId != null  and orderId != ''"> and order_id = #{orderId}</if>
+            <if test="region != null  and region != ''"> and region = #{region}</if>
+            <if test="organLevel != null  and organLevel != ''"> and organ_level = #{organLevel}</if>
+            <if test="sellDrgan != null  and sellDrgan != ''"> and sell_drgan = #{sellDrgan}</if>
+            <if test="matter != null  and matter != ''"> and matter = #{matter}</if>
+            <if test="matterDescribe != null  and matterDescribe != ''"> and matter_describe = #{matterDescribe}</if>
+            <if test="matterGroup != null  and matterGroup != ''"> and matter_group = #{matterGroup}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="guard1 != null  and guard1 != ''"> and guard1 = #{guard1}</if>
+            <if test="guard2 != null  and guard2 != ''"> and guard2 = #{guard2}</if>
+            <if test="guard3 != null  and guard3 != ''"> and guard3 = #{guard3}</if>
+        </where>
+    </select>
+    
+    <select id="selectSysMatterDataById" parameterType="Long" resultMap="SysMatterDataResult">
+        <include refid="selectSysMatterDataVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSysMatterData" parameterType="SysMatterData" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_matter_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">order_id,</if>
+            <if test="region != null">region,</if>
+            <if test="organLevel != null">organ_level,</if>
+            <if test="sellDrgan != null">sell_drgan,</if>
+            <if test="matter != null">matter,</if>
+            <if test="matterDescribe != null">matter_describe,</if>
+            <if test="matterGroup != null">matter_group,</if>
+            <if test="status != null">status,</if>
+            <if test="guard1 != null">guard1,</if>
+            <if test="guard2 != null">guard2,</if>
+            <if test="guard3 != null">guard3,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">#{orderId},</if>
+            <if test="region != null">#{region},</if>
+            <if test="organLevel != null">#{organLevel},</if>
+            <if test="sellDrgan != null">#{sellDrgan},</if>
+            <if test="matter != null">#{matter},</if>
+            <if test="matterDescribe != null">#{matterDescribe},</if>
+            <if test="matterGroup != null">#{matterGroup},</if>
+            <if test="status != null">#{status},</if>
+            <if test="guard1 != null">#{guard1},</if>
+            <if test="guard2 != null">#{guard2},</if>
+            <if test="guard3 != null">#{guard3},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysMatterData" parameterType="SysMatterData">
+        update sys_matter_data
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="orderId != null">order_id = #{orderId},</if>
+            <if test="region != null">region = #{region},</if>
+            <if test="organLevel != null">organ_level = #{organLevel},</if>
+            <if test="sellDrgan != null">sell_drgan = #{sellDrgan},</if>
+            <if test="matter != null">matter = #{matter},</if>
+            <if test="matterDescribe != null">matter_describe = #{matterDescribe},</if>
+            <if test="matterGroup != null">matter_group = #{matterGroup},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="guard1 != null">guard1 = #{guard1},</if>
+            <if test="guard2 != null">guard2 = #{guard2},</if>
+            <if test="guard3 != null">guard3 = #{guard3},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysMatterDataById" parameterType="Long">
+        delete from sys_matter_data where id = #{id}
+    </delete>
+
+    <delete id="deleteSysMatterDataByIds" parameterType="String">
+        delete from sys_matter_data where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>
