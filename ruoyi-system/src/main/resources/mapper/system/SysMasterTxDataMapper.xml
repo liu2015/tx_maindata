@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysMasterTxDataMapper">
+    
+    <resultMap type="SysMasterTxData" id="SysMasterTxDataResult">
+        <result property="id"    column="id"    />
+        <result property="orderId"    column="order_id"    />
+        <result property="customerCode"    column="customer_code"    />
+        <result property="customeName"    column="custome_name"    />
+        <result property="business"    column="business"    />
+        <result property="sapAbb"    column="sap_abb"    />
+        <result property="statE"    column="stat_e"    />
+        <result property="province"    column="province"    />
+        <result property="county"    column="county"    />
+        <result property="address"    column="address"    />
+        <result property="storeContact"    column="store_contact"    />
+        <result property="storeContelephone"    column="store_contelephone"    />
+        <result property="lanGuae"    column="lan_guae"    />
+        <result property="clientClassify"    column="client_classify"    />
+        <result property="av6"    column="av6"    />
+        <result property="openShop"    column="open_shop"    />
+        <result property="setshop"    column="setshop"    />
+        <result property="doBusiress"    column="do_busiress"    />
+        <result property="montHrent"    column="mont_hrent"    />
+        <result property="longItude"    column="long_itude"    />
+        <result property="latiFude"    column="lati_fude"    />
+        <result property="contrActtenany"    column="contr_acttenany"    />
+        <result property="rentAdvice"    column="rent_advice"    />
+        <result property="rentOne"    column="rent_one"    />
+        <result property="pints1"    column="pints1"    />
+        <result property="deposit"    column="deposit"    />
+        <result property="conveYancefee"    column="conve_yancefee"    />
+        <result property="preDict"    column="pre_dict"    />
+        <result property="preDictpr"    column="pre_dictpr"    />
+        <result property="pbp"    column="pbp"    />
+        <result property="dereName"    column="dere_name"    />
+        <result property="predIctstore"    column="pred_ictstore"    />
+        <result property="predIctsales"    column="pred_ictsales"    />
+        <result property="predIctflow"    column="pred_ictflow"    />
+        <result property="addConfract"    column="add_confract"    />
+        <result property="shopClass"    column="shop_class"    />
+        <result property="tax5"    column="tax5"    />
+        <result property="brnkCode"    column="brnk_code"    />
+        <result property="bankNatio"    column="bank_natio"    />
+        <result property="bankaCcount"    column="banka_ccount"    />
+        <result property="baokName"    column="baok_name"    />
+        <result property="offCode"    column="off_code"    />
+        <result property="numBer"    column="num_ber"    />
+        <result property="numBersort"    column="num_bersort"    />
+        <result property="typePaymnt"    column="type_paymnt"    />
+        <result property="remarks"    column="remarks"    />
+        <result property="marKeting"    column="mar_keting"    />
+        <result property="retAil"    column="ret_ail"    />
+        <result property="divSion"    column="div_sion"    />
+        <result property="salesRegion"    column="sales_region"    />
+        <result property="salesDepart"    column="sales_depart"    />
+        <result property="salesGroup"    column="sales_group"    />
+        <result property="custGroup"    column="cust_group"    />
+        <result property="moneY"    column="mone_y"    />
+        <result property="pricetAriff"    column="pricet_ariff"    />
+        <result property="pricingProcedure"    column="pricing_procedure"    />
+        <result property="operatIng"    column="operat_ing"    />
+        <result property="deliverypLant"    column="deliveryp_lant"    />
+        <result property="orididide"    column="orididide"    />
+        <result property="trade1"    column="trade1"    />
+        <result property="trade2"    column="trade2"    />
+        <result property="paycode"    column="paycode"    />
+        <result property="custGroupaccount"    column="cust_groupaccount"    />
+        <result property="custtax"    column="custtax"    />
+        <result property="rtd"    column="rtd"    />
+        <result property="regionManager"    column="region_manager"    />
+        <result property="servicel"    column="servicel"    />
+        <result property="codesocill"    column="codesocill"    />
+        <result property="taxcode"    column="taxcode"    />
+        <result property="foodLicense"    column="food_license"    />
+        <result property="foodLicensel"    column="food_licensel"    />
+        <result property="foodLicensetime"    column="food_licensetime"    />
+        <result property="foodLicensetimeto"    column="food_licensetimeto"    />
+        <result property="foodLicensetimeon"    column="food_licensetimeon"    />
+        <result property="posCode"    column="pos_code"    />
+        <result property="storEtype"    column="stor_etype"    />
+        <result property="speCialid"    column="spe_cialid"    />
+    </resultMap>
+
+    <sql id="selectSysMasterTxDataVo">
+        select id, order_id, customer_code, custome_name, business, sap_abb, stat_e, province, county, address, store_contact, store_contelephone, lan_guae, client_classify, av6, open_shop, setshop, do_busiress, mont_hrent, long_itude, lati_fude, contr_acttenany, rent_advice, rent_one, pints1, deposit,  conve_yancefee, pre_dict, pre_dictpr, pbp, dere_name, pred_ictstore, pred_ictsales, pred_ictflow, add_confract, shop_class, tax5, brnk_code,  bank_natio, banka_ccount, baok_name, off_code, num_ber, num_bersort, type_paymnt, remarks, mar_keting, ret_ail, div_sion, sales_region, sales_depart, sales_group, cust_group, mone_y, pricet_ariff, pricing_procedure, operat_ing, deliveryp_lant, orididide, trade1, trade2, paycode, cust_groupaccount, custtax, rtd, region_manager, servicel, codesocill, taxcode, food_license, food_licensel, food_licensetime, food_licensetimeto, food_licensetimeon, pos_code, stor_etype, spe_cialid from sys_master_tx_data
+    </sql>
+
+    <select id="selectSysMasterTxDataList" parameterType="SysMasterTxData" resultMap="SysMasterTxDataResult">
+        <include refid="selectSysMasterTxDataVo"/>
+        <where>  
+            <if test="orderId != null  and orderId != ''"> and order_id = #{orderId}</if>
+            <if test="customerCode != null  and customerCode != ''"> and customer_code = #{customerCode}</if>
+            <if test="customeName != null  and customeName != ''"> and custome_name like concat('%', #{customeName}, '%')</if>
+            <if test="business != null  and business != ''"> and business = #{business}</if>
+            <if test="sapAbb != null  and sapAbb != ''"> and sap_abb = #{sapAbb}</if>
+            <if test="statE != null  and statE != ''"> and stat_e = #{statE}</if>
+            <if test="province != null  and province != ''"> and province = #{province}</if>
+            <if test="county != null  and county != ''"> and county = #{county}</if>
+            <if test="address != null  and address != ''"> and address = #{address}</if>
+            <if test="storeContact != null  and storeContact != ''"> and store_contact = #{storeContact}</if>
+            <if test="storeContelephone != null  and storeContelephone != ''"> and store_contelephone = #{storeContelephone}</if>
+            <if test="lanGuae != null  and lanGuae != ''"> and lan_guae = #{lanGuae}</if>
+            <if test="clientClassify != null  and clientClassify != ''"> and client_classify = #{clientClassify}</if>
+            <if test="av6 != null  and av6 != ''"> and av6 = #{av6}</if>
+            <if test="openShop != null  and openShop != ''"> and open_shop = #{openShop}</if>
+            <if test="setshop != null  and setshop != ''"> and setshop = #{setshop}</if>
+            <if test="doBusiress != null  and doBusiress != ''"> and do_busiress = #{doBusiress}</if>
+            <if test="montHrent != null  and montHrent != ''"> and mont_hrent = #{montHrent}</if>
+            <if test="longItude != null  and longItude != ''"> and long_itude = #{longItude}</if>
+            <if test="latiFude != null  and latiFude != ''"> and lati_fude = #{latiFude}</if>
+            <if test="contrActtenany != null  and contrActtenany != ''"> and contr_acttenany = #{contrActtenany}</if>
+            <if test="rentAdvice != null  and rentAdvice != ''"> and rent_advice = #{rentAdvice}</if>
+            <if test="rentOne != null  and rentOne != ''"> and rent_one = #{rentOne}</if>
+            <if test="pints1 != null  and pints1 != ''"> and pints1 = #{pints1}</if>
+            <if test="deposit != null  and deposit != ''"> and deposit = #{deposit}</if>
+            <if test="conveYancefee != null  and conveYancefee != ''"> and  conve_yancefee = #{ conveYancefee}</if>
+            <if test="preDict != null  and preDict != ''"> and pre_dict = #{preDict}</if>
+            <if test="preDictpr != null  and preDictpr != ''"> and pre_dictpr = #{preDictpr}</if>
+            <if test="pbp != null  and pbp != ''"> and pbp = #{pbp}</if>
+            <if test="dereName != null  and dereName != ''"> and dere_name like concat('%', #{dereName}, '%')</if>
+            <if test="predIctstore != null  and predIctstore != ''"> and pred_ictstore = #{predIctstore}</if>
+            <if test="predIctsales != null  and predIctsales != ''"> and pred_ictsales = #{predIctsales}</if>
+            <if test="predIctflow != null  and predIctflow != ''"> and pred_ictflow = #{predIctflow}</if>
+            <if test="addConfract != null  and addConfract != ''"> and add_confract = #{addConfract}</if>
+            <if test="shopClass != null  and shopClass != ''"> and shop_class = #{shopClass}</if>
+            <if test="tax5 != null  and tax5 != ''"> and tax5 = #{tax5}</if>
+            <if test="brnkCode != null  and brnkCode != ''"> and brnk_code = #{brnkCode}</if>
+            <if test="bankNatio != null  and bankNatio != ''"> and  bank_natio = #{ bankNatio}</if>
+            <if test="bankaCcount != null  and bankaCcount != ''"> and banka_ccount = #{bankaCcount}</if>
+            <if test="baokName != null  and baokName != ''"> and baok_name like concat('%', #{baokName}, '%')</if>
+            <if test="offCode != null  and offCode != ''"> and off_code = #{offCode}</if>
+            <if test="numBer != null  and numBer != ''"> and num_ber = #{numBer}</if>
+            <if test="numBersort != null  and numBersort != ''"> and num_bersort = #{numBersort}</if>
+            <if test="typePaymnt != null  and typePaymnt != ''"> and type_paymnt = #{typePaymnt}</if>
+            <if test="remarks != null  and remarks != ''"> and remarks = #{remarks}</if>
+            <if test="marKeting != null  and marKeting != ''"> and mar_keting = #{marKeting}</if>
+            <if test="retAil != null  and retAil != ''"> and ret_ail = #{retAil}</if>
+            <if test="divSion != null  and divSion != ''"> and div_sion = #{divSion}</if>
+            <if test="salesRegion != null  and salesRegion != ''"> and sales_region = #{salesRegion}</if>
+            <if test="salesDepart != null  and salesDepart != ''"> and sales_depart = #{salesDepart}</if>
+            <if test="salesGroup != null  and salesGroup != ''"> and sales_group = #{salesGroup}</if>
+            <if test="custGroup != null  and custGroup != ''"> and cust_group = #{custGroup}</if>
+            <if test="moneY != null  and moneY != ''"> and mone_y = #{moneY}</if>
+            <if test="pricetAriff != null  and pricetAriff != ''"> and pricet_ariff = #{pricetAriff}</if>
+            <if test="pricingProcedure != null  and pricingProcedure != ''"> and pricing_procedure = #{pricingProcedure}</if>
+            <if test="operatIng != null  and operatIng != ''"> and operat_ing = #{operatIng}</if>
+            <if test="deliverypLant != null  and deliverypLant != ''"> and deliveryp_lant = #{deliverypLant}</if>
+            <if test="orididide != null  and orididide != ''"> and orididide = #{orididide}</if>
+            <if test="trade1 != null  and trade1 != ''"> and trade1 = #{trade1}</if>
+            <if test="trade2 != null  and trade2 != ''"> and trade2 = #{trade2}</if>
+            <if test="paycode != null  and paycode != ''"> and paycode = #{paycode}</if>
+            <if test="custGroupaccount != null  and custGroupaccount != ''"> and cust_groupaccount = #{custGroupaccount}</if>
+            <if test="custtax != null  and custtax != ''"> and custtax = #{custtax}</if>
+            <if test="rtd != null  and rtd != ''"> and rtd = #{rtd}</if>
+            <if test="regionManager != null  and regionManager != ''"> and region_manager = #{regionManager}</if>
+            <if test="servicel != null  and servicel != ''"> and servicel = #{servicel}</if>
+            <if test="codesocill != null  and codesocill != ''"> and codesocill = #{codesocill}</if>
+            <if test="taxcode != null  and taxcode != ''"> and taxcode = #{taxcode}</if>
+            <if test="foodLicense != null  and foodLicense != ''"> and food_license = #{foodLicense}</if>
+            <if test="foodLicensel != null  and foodLicensel != ''"> and food_licensel = #{foodLicensel}</if>
+            <if test="foodLicensetime != null  and foodLicensetime != ''"> and food_licensetime = #{foodLicensetime}</if>
+            <if test="foodLicensetimeto != null  and foodLicensetimeto != ''"> and food_licensetimeto = #{foodLicensetimeto}</if>
+            <if test="foodLicensetimeon != null  and foodLicensetimeon != ''"> and food_licensetimeon = #{foodLicensetimeon}</if>
+            <if test="posCode != null  and posCode != ''"> and pos_code = #{posCode}</if>
+            <if test="storEtype != null  and storEtype != ''"> and stor_etype = #{storEtype}</if>
+            <if test="speCialid != null  and speCialid != ''"> and spe_cialid = #{speCialid}</if>
+        </where>
+    </select>
+    
+    <select id="selectSysMasterTxDataById" parameterType="Long" resultMap="SysMasterTxDataResult">
+        <include refid="selectSysMasterTxDataVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSysMasterTxData" parameterType="SysMasterTxData" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_master_tx_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">order_id,</if>
+            <if test="customerCode != null">customer_code,</if>
+            <if test="customeName != null">custome_name,</if>
+            <if test="business != null">business,</if>
+            <if test="sapAbb != null">sap_abb,</if>
+            <if test="statE != null">stat_e,</if>
+            <if test="province != null">province,</if>
+            <if test="county != null">county,</if>
+            <if test="address != null">address,</if>
+            <if test="storeContact != null">store_contact,</if>
+            <if test="storeContelephone != null">store_contelephone,</if>
+            <if test="lanGuae != null">lan_guae,</if>
+            <if test="clientClassify != null">client_classify,</if>
+            <if test="av6 != null">av6,</if>
+            <if test="openShop != null">open_shop,</if>
+            <if test="setshop != null">setshop,</if>
+            <if test="doBusiress != null">do_busiress,</if>
+            <if test="montHrent != null">mont_hrent,</if>
+            <if test="longItude != null">long_itude,</if>
+            <if test="latiFude != null">lati_fude,</if>
+            <if test="contrActtenany != null">contr_acttenany,</if>
+            <if test="rentAdvice != null">rent_advice,</if>
+            <if test="rentOne != null">rent_one,</if>
+            <if test="pints1 != null">pints1,</if>
+            <if test="deposit != null">deposit,</if>
+            <if test="conveYancefee != null"> conve_yancefee,</if>
+            <if test="preDict != null">pre_dict,</if>
+            <if test="preDictpr != null">pre_dictpr,</if>
+            <if test="pbp != null">pbp,</if>
+            <if test="dereName != null">dere_name,</if>
+            <if test="predIctstore != null">pred_ictstore,</if>
+            <if test="predIctsales != null">pred_ictsales,</if>
+            <if test="predIctflow != null">pred_ictflow,</if>
+            <if test="addConfract != null">add_confract,</if>
+            <if test="shopClass != null">shop_class,</if>
+            <if test="tax5 != null">tax5,</if>
+            <if test="brnkCode != null">brnk_code,</if>
+            <if test="bankNatio != null"> bank_natio,</if>
+            <if test="bankaCcount != null">banka_ccount,</if>
+            <if test="baokName != null">baok_name,</if>
+            <if test="offCode != null">off_code,</if>
+            <if test="numBer != null">num_ber,</if>
+            <if test="numBersort != null">num_bersort,</if>
+            <if test="typePaymnt != null">type_paymnt,</if>
+            <if test="remarks != null">remarks,</if>
+            <if test="marKeting != null">mar_keting,</if>
+            <if test="retAil != null">ret_ail,</if>
+            <if test="divSion != null">div_sion,</if>
+            <if test="salesRegion != null">sales_region,</if>
+            <if test="salesDepart != null">sales_depart,</if>
+            <if test="salesGroup != null">sales_group,</if>
+            <if test="custGroup != null">cust_group,</if>
+            <if test="moneY != null">mone_y,</if>
+            <if test="pricetAriff != null">pricet_ariff,</if>
+            <if test="pricingProcedure != null">pricing_procedure,</if>
+            <if test="operatIng != null">operat_ing,</if>
+            <if test="deliverypLant != null">deliveryp_lant,</if>
+            <if test="orididide != null">orididide,</if>
+            <if test="trade1 != null">trade1,</if>
+            <if test="trade2 != null">trade2,</if>
+            <if test="paycode != null">paycode,</if>
+            <if test="custGroupaccount != null">cust_groupaccount,</if>
+            <if test="custtax != null">custtax,</if>
+            <if test="rtd != null">rtd,</if>
+            <if test="regionManager != null">region_manager,</if>
+            <if test="servicel != null">servicel,</if>
+            <if test="codesocill != null">codesocill,</if>
+            <if test="taxcode != null">taxcode,</if>
+            <if test="foodLicense != null">food_license,</if>
+            <if test="foodLicensel != null">food_licensel,</if>
+            <if test="foodLicensetime != null">food_licensetime,</if>
+            <if test="foodLicensetimeto != null">food_licensetimeto,</if>
+            <if test="foodLicensetimeon != null">food_licensetimeon,</if>
+            <if test="posCode != null">pos_code,</if>
+            <if test="storEtype != null">stor_etype,</if>
+            <if test="speCialid != null">spe_cialid,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">#{orderId},</if>
+            <if test="customerCode != null">#{customerCode},</if>
+            <if test="customeName != null">#{customeName},</if>
+            <if test="business != null">#{business},</if>
+            <if test="sapAbb != null">#{sapAbb},</if>
+            <if test="statE != null">#{statE},</if>
+            <if test="province != null">#{province},</if>
+            <if test="county != null">#{county},</if>
+            <if test="address != null">#{address},</if>
+            <if test="storeContact != null">#{storeContact},</if>
+            <if test="storeContelephone != null">#{storeContelephone},</if>
+            <if test="lanGuae != null">#{lanGuae},</if>
+            <if test="clientClassify != null">#{clientClassify},</if>
+            <if test="av6 != null">#{av6},</if>
+            <if test="openShop != null">#{openShop},</if>
+            <if test="setshop != null">#{setshop},</if>
+            <if test="doBusiress != null">#{doBusiress},</if>
+            <if test="montHrent != null">#{montHrent},</if>
+            <if test="longItude != null">#{longItude},</if>
+            <if test="latiFude != null">#{latiFude},</if>
+            <if test="contrActtenany != null">#{contrActtenany},</if>
+            <if test="rentAdvice != null">#{rentAdvice},</if>
+            <if test="rentOne != null">#{rentOne},</if>
+            <if test="pints1 != null">#{pints1},</if>
+            <if test="deposit != null">#{deposit},</if>
+            <if test="conveYancefee != null">#{ conveYancefee},</if>
+            <if test="preDict != null">#{preDict},</if>
+            <if test="preDictpr != null">#{preDictpr},</if>
+            <if test="pbp != null">#{pbp},</if>
+            <if test="dereName != null">#{dereName},</if>
+            <if test="predIctstore != null">#{predIctstore},</if>
+            <if test="predIctsales != null">#{predIctsales},</if>
+            <if test="predIctflow != null">#{predIctflow},</if>
+            <if test="addConfract != null">#{addConfract},</if>
+            <if test="shopClass != null">#{shopClass},</if>
+            <if test="tax5 != null">#{tax5},</if>
+            <if test="brnkCode != null">#{brnkCode},</if>
+            <if test="bankNatio != null">#{ bankNatio},</if>
+            <if test="bankaCcount != null">#{bankaCcount},</if>
+            <if test="baokName != null">#{baokName},</if>
+            <if test="offCode != null">#{offCode},</if>
+            <if test="numBer != null">#{numBer},</if>
+            <if test="numBersort != null">#{numBersort},</if>
+            <if test="typePaymnt != null">#{typePaymnt},</if>
+            <if test="remarks != null">#{remarks},</if>
+            <if test="marKeting != null">#{marKeting},</if>
+            <if test="retAil != null">#{retAil},</if>
+            <if test="divSion != null">#{divSion},</if>
+            <if test="salesRegion != null">#{salesRegion},</if>
+            <if test="salesDepart != null">#{salesDepart},</if>
+            <if test="salesGroup != null">#{salesGroup},</if>
+            <if test="custGroup != null">#{custGroup},</if>
+            <if test="moneY != null">#{moneY},</if>
+            <if test="pricetAriff != null">#{pricetAriff},</if>
+            <if test="pricingProcedure != null">#{pricingProcedure},</if>
+            <if test="operatIng != null">#{operatIng},</if>
+            <if test="deliverypLant != null">#{deliverypLant},</if>
+            <if test="orididide != null">#{orididide},</if>
+            <if test="trade1 != null">#{trade1},</if>
+            <if test="trade2 != null">#{trade2},</if>
+            <if test="paycode != null">#{paycode},</if>
+            <if test="custGroupaccount != null">#{custGroupaccount},</if>
+            <if test="custtax != null">#{custtax},</if>
+            <if test="rtd != null">#{rtd},</if>
+            <if test="regionManager != null">#{regionManager},</if>
+            <if test="servicel != null">#{servicel},</if>
+            <if test="codesocill != null">#{codesocill},</if>
+            <if test="taxcode != null">#{taxcode},</if>
+            <if test="foodLicense != null">#{foodLicense},</if>
+            <if test="foodLicensel != null">#{foodLicensel},</if>
+            <if test="foodLicensetime != null">#{foodLicensetime},</if>
+            <if test="foodLicensetimeto != null">#{foodLicensetimeto},</if>
+            <if test="foodLicensetimeon != null">#{foodLicensetimeon},</if>
+            <if test="posCode != null">#{posCode},</if>
+            <if test="storEtype != null">#{storEtype},</if>
+            <if test="speCialid != null">#{speCialid},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysMasterTxData" parameterType="SysMasterTxData">
+        update sys_master_tx_data
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="orderId != null">order_id = #{orderId},</if>
+            <if test="customerCode != null">customer_code = #{customerCode},</if>
+            <if test="customeName != null">custome_name = #{customeName},</if>
+            <if test="business != null">business = #{business},</if>
+            <if test="sapAbb != null">sap_abb = #{sapAbb},</if>
+            <if test="statE != null">stat_e = #{statE},</if>
+            <if test="province != null">province = #{province},</if>
+            <if test="county != null">county = #{county},</if>
+            <if test="address != null">address = #{address},</if>
+            <if test="storeContact != null">store_contact = #{storeContact},</if>
+            <if test="storeContelephone != null">store_contelephone = #{storeContelephone},</if>
+            <if test="lanGuae != null">lan_guae = #{lanGuae},</if>
+            <if test="clientClassify != null">client_classify = #{clientClassify},</if>
+            <if test="av6 != null">av6 = #{av6},</if>
+            <if test="openShop != null">open_shop = #{openShop},</if>
+            <if test="setshop != null">setshop = #{setshop},</if>
+            <if test="doBusiress != null">do_busiress = #{doBusiress},</if>
+            <if test="montHrent != null">mont_hrent = #{montHrent},</if>
+            <if test="longItude != null">long_itude = #{longItude},</if>
+            <if test="latiFude != null">lati_fude = #{latiFude},</if>
+            <if test="contrActtenany != null">contr_acttenany = #{contrActtenany},</if>
+            <if test="rentAdvice != null">rent_advice = #{rentAdvice},</if>
+            <if test="rentOne != null">rent_one = #{rentOne},</if>
+            <if test="pints1 != null">pints1 = #{pints1},</if>
+            <if test="deposit != null">deposit = #{deposit},</if>
+            <if test="conveYancefee != null"> conve_yancefee = #{ conveYancefee},</if>
+            <if test="preDict != null">pre_dict = #{preDict},</if>
+            <if test="preDictpr != null">pre_dictpr = #{preDictpr},</if>
+            <if test="pbp != null">pbp = #{pbp},</if>
+            <if test="dereName != null">dere_name = #{dereName},</if>
+            <if test="predIctstore != null">pred_ictstore = #{predIctstore},</if>
+            <if test="predIctsales != null">pred_ictsales = #{predIctsales},</if>
+            <if test="predIctflow != null">pred_ictflow = #{predIctflow},</if>
+            <if test="addConfract != null">add_confract = #{addConfract},</if>
+            <if test="shopClass != null">shop_class = #{shopClass},</if>
+            <if test="tax5 != null">tax5 = #{tax5},</if>
+            <if test="brnkCode != null">brnk_code = #{brnkCode},</if>
+            <if test="bankNatio != null"> bank_natio = #{ bankNatio},</if>
+            <if test="bankaCcount != null">banka_ccount = #{bankaCcount},</if>
+            <if test="baokName != null">baok_name = #{baokName},</if>
+            <if test="offCode != null">off_code = #{offCode},</if>
+            <if test="numBer != null">num_ber = #{numBer},</if>
+            <if test="numBersort != null">num_bersort = #{numBersort},</if>
+            <if test="typePaymnt != null">type_paymnt = #{typePaymnt},</if>
+            <if test="remarks != null">remarks = #{remarks},</if>
+            <if test="marKeting != null">mar_keting = #{marKeting},</if>
+            <if test="retAil != null">ret_ail = #{retAil},</if>
+            <if test="divSion != null">div_sion = #{divSion},</if>
+            <if test="salesRegion != null">sales_region = #{salesRegion},</if>
+            <if test="salesDepart != null">sales_depart = #{salesDepart},</if>
+            <if test="salesGroup != null">sales_group = #{salesGroup},</if>
+            <if test="custGroup != null">cust_group = #{custGroup},</if>
+            <if test="moneY != null">mone_y = #{moneY},</if>
+            <if test="pricetAriff != null">pricet_ariff = #{pricetAriff},</if>
+            <if test="pricingProcedure != null">pricing_procedure = #{pricingProcedure},</if>
+            <if test="operatIng != null">operat_ing = #{operatIng},</if>
+            <if test="deliverypLant != null">deliveryp_lant = #{deliverypLant},</if>
+            <if test="orididide != null">orididide = #{orididide},</if>
+            <if test="trade1 != null">trade1 = #{trade1},</if>
+            <if test="trade2 != null">trade2 = #{trade2},</if>
+            <if test="paycode != null">paycode = #{paycode},</if>
+            <if test="custGroupaccount != null">cust_groupaccount = #{custGroupaccount},</if>
+            <if test="custtax != null">custtax = #{custtax},</if>
+            <if test="rtd != null">rtd = #{rtd},</if>
+            <if test="regionManager != null">region_manager = #{regionManager},</if>
+            <if test="servicel != null">servicel = #{servicel},</if>
+            <if test="codesocill != null">codesocill = #{codesocill},</if>
+            <if test="taxcode != null">taxcode = #{taxcode},</if>
+            <if test="foodLicense != null">food_license = #{foodLicense},</if>
+            <if test="foodLicensel != null">food_licensel = #{foodLicensel},</if>
+            <if test="foodLicensetime != null">food_licensetime = #{foodLicensetime},</if>
+            <if test="foodLicensetimeto != null">food_licensetimeto = #{foodLicensetimeto},</if>
+            <if test="foodLicensetimeon != null">food_licensetimeon = #{foodLicensetimeon},</if>
+            <if test="posCode != null">pos_code = #{posCode},</if>
+            <if test="storEtype != null">stor_etype = #{storEtype},</if>
+            <if test="speCialid != null">spe_cialid = #{speCialid},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysMasterTxDataById" parameterType="Long">
+        delete from sys_master_tx_data where id = #{id}
+    </delete>
+
+    <delete id="deleteSysMasterTxDataByIds" parameterType="String">
+        delete from sys_master_tx_data where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>
