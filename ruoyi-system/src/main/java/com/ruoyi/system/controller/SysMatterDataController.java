@@ -107,6 +107,10 @@ public class SysMatterDataController extends BaseController
     }
 
 //    importTemplate
+    /**
+     * 导出模板
+     */
+
 
     @GetMapping("/importTemplate")
     public AjaxResult importTemplate()
@@ -115,8 +119,13 @@ public class SysMatterDataController extends BaseController
         return util.importTemplateExcel("物料数据");
     }
 
+/**
+ * 导入物料
+ * 使用excle工具 然后转换成对象list
+ * 遍历循环插入到数据库
+ */
 
-    @Log(title = "用户管理", businessType = BusinessType.IMPORT)
+    @Log(title = "物料导入", businessType = BusinessType.IMPORT)
     @PreAuthorize("@ss.hasPermi('system:user:import')")
     @PostMapping("/importData")
     public AjaxResult importData(MultipartFile file, boolean updateSupport) throws Exception
