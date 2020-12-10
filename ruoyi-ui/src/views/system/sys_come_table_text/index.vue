@@ -3,14 +3,14 @@
   <div class="app-container">
 
 
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
+    <el-form :model="queryParams" ref="queryForm" :inline="true"  :rules="rules" v-show="showSearch" label-width="68px">
       <el-form-item label="来访姓名" prop="comeName">
         <el-input
           v-model="queryParams.comeName"
           placeholder="请输入来访姓名"
           clearable
           size="small"
-          @keyup.enter.native="handleQuery"
+          @keyup.enter.native="handleQuery" required
         />
       </el-form-item>
       <!--
@@ -281,9 +281,24 @@ export default {
       form: {},
       // 表单校验
       rules: {
+         comeName: [{
+          required: true,
+          message: '请输入单行文本',
+          trigger: 'blur'
+        }],
+        callLink: [{
+          required: true,
+          message: '请输入手机号',
+          trigger: 'blur'
+        }, {
+          pattern: /^1(3|4|5|7|8|9)\d{9}$/,
+          message: '手机号格式错误',
+          trigger: 'blur'
+        }],
       }
     };
   },
+   
   created() {
     // this.getList();
     this.getDicts("sys_user_sex").then(response => {
@@ -294,6 +309,7 @@ export default {
     /** 查询出入登记列表 */
     getList() {
       this.loading = true;
+
       listSys_come_table(this.queryParams).then(response => {
         this.sys_come_tableList = response.rows;
         this.total = response.total;
@@ -327,7 +343,10 @@ export default {
     /** 搜索按钮操作 */
     handleQuery() {
       this.queryParams.pageNum = 1;
-      this.getList();
+      if(this.queryParams.comeName!=null || this.queryParams.callLink!=null){
+              this.getList();
+
+      }
       this.open_table=true;
     },
     /** 重置按钮操作 */
