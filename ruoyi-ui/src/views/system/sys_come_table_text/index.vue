@@ -13,6 +13,8 @@
           @keyup.enter.native="handleQuery" required
         />
       </el-form-item>
+
+
       <!--
       <el-form-item label="性别" prop="sex">
         <el-select v-model="queryParams.sex" placeholder="请选择性别" clearable size="small">
@@ -85,6 +87,12 @@
       </el-form-item>
     </el-form>
 
+
+
+
+
+
+
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button
@@ -127,7 +135,19 @@
 	  <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
-
+<el-card class="box-card">
+  <div v-for="itmet in sys_come_tableList" :key="itmet.id" class="text item">
+    
+    <el-tag>你好： {{itmet.comeName}}  你的来访问时间是：{{itmet.comeTime}}</el-tag>
+        <el-button
+            size="mini"
+            type="warning"
+            icon="el-icon-edit"
+            @click="handleDeletetest(itmet)"
+            v-hasPermi="['system:sys_come_table:edit']"
+        round   >离开请点我</el-button>
+  </div>
+</el-card>
 
 <div v-show="open_table">
     <el-table v-loading="loading"  :data="sys_come_tableList" @selection-change="handleSelectionChange">
@@ -316,6 +336,16 @@ export default {
         this.loading = false;
       });
     },
+      getListtest(data) {
+      this.loading = true;
+      this.queryParams.callLink=data
+
+      listSys_come_table(this.queryParams).then(response => {
+        this.sys_come_tableList = response.rows;
+        this.total = response.total;
+        this.loading = false;
+      });
+    },
     // 性别字典翻译
     sexFormat(row, column) {
       return this.selectDictLabel(this.sexOptions, row.sex);
@@ -343,7 +373,7 @@ export default {
     /** 搜索按钮操作 */
     handleQuery() {
       this.queryParams.pageNum = 1;
-      if(this.queryParams.comeName!=null || this.queryParams.callLink!=null){
+      if(this.queryParams.comeName!=null && this.queryParams.callLink!=null){
               this.getList();
 
       }
@@ -376,6 +406,7 @@ export default {
         this.title = "修改出入登记";
       });
     },
+    
     /** 提交按钮 */
     submitForm() {
       this.$refs["form"].validate(valid => {
@@ -390,7 +421,9 @@ export default {
             addSys_come_table(this.form).then(response => {
               this.msgSuccess("新增成功");
               this.open = false;
-              this.getList();
+              const datatest= this.form.callLink
+
+              this.getListtest(datatest);
             });
           }
         }
@@ -398,6 +431,22 @@ export default {
     },
     /** 删除按钮操作 变更成修改操作 */
     handleDelete(row) {
+      const ids = row.id || this.ids;
+      this.$confirm('是否确认开开出入登记编号为"' + ids + '"的数据项?', "警告", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning"
+        }).then(function() {
+       
+          return delSys_come_table_text(ids);
+        }).then(() => {
+          this.getList();
+          this.msgSuccess("欢迎下次光临周黑鸭工厂");
+        })
+    },
+
+        /** 删除按钮操作 变更成修改操作 */
+    handleDeletetest(row) {
       const ids = row.id || this.ids;
       this.$confirm('是否确认开开出入登记编号为"' + ids + '"的数据项?', "警告", {
           confirmButtonText: "确定",
@@ -427,3 +476,16 @@ export default {
   }
 };
 </script>
+<style>
+  .text {
+    font-size: 14px;
+  }
+
+  .item {
+    padding: 18px 0;
+  }
+
+  .box-card {
+    width: 500px;
+  }
+</style>
