@@ -361,6 +361,7 @@ export default {
       title: "",
       // 是否显示弹出层
       open: false,
+      open1:false,
       // 核算方式字典
       offAccantingOptions: [],
       // 门店类型字典
@@ -369,6 +370,7 @@ export default {
       offFicoOptions: [],
       // it确认字典
       offItOptions: [],
+     
       // 查询参数
       queryParams: {
         pageNum: 1,

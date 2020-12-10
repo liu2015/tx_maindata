@@ -2,9 +2,11 @@ package com.ruoyi.system.controller;
 
 import java.util.List;
 
+import com.ruoyi.common.core.domain.entity.SysDictData;
 import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.common.utils.uuid.IdUtils;
 import com.ruoyi.system.domain.SysManListData;
+import com.ruoyi.system.service.ISysDictDataService;
 import com.ruoyi.system.service.ISysManListDataService;
 import com.ruoyi.system.wxmessage.service.Wxservice;
 import com.ruoyi.system.wxmessage.service.Wxserviceinfo;
@@ -44,6 +46,9 @@ public class SysManDataController extends BaseController
     private ISysManListDataService sysManListDataService;
     @Autowired
     private  Wxservice wxservice;
+
+    @Autowired
+    private ISysDictDataService dictDataService;
 
     @Autowired
     private Wxserviceinfo wxserviceinfo;
@@ -121,6 +126,13 @@ public class SysManDataController extends BaseController
                 listdata.setGu2("3");
                 sysManListDataService.insertSysManListData(listdata);
 
+                SysDictData dictData=new SysDictData();
+//                 实现功能将orid 递交到字典里
+                dictData.setDictValue(sysManData.getOrderId());
+                dictData.setDictLabel(sysManData.getOrderId());
+                dictData.setDictType("order_idtest");
+                dictData.setDictSort(1L);
+             dictDataService.insertDictData(dictData);
             }
 
 

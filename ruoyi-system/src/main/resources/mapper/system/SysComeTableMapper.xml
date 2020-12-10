@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysComeTableMapper">
+    
+    <resultMap type="SysComeTable" id="SysComeTableResult">
+        <result property="id"    column="id"    />
+        <result property="comeName"    column="come_name"    />
+        <result property="sex"    column="sex"    />
+        <result property="ideNtity"    column="ide_ntity"    />
+        <result property="worKunit"    column="wor_kunit"    />
+        <result property="callLink"    column="call_link"    />
+        <result property="comeTime"    column="come_time"    />
+        <result property="leaweTime"    column="leawe_time"    />
+        <result property="reaMarks"    column="rea_marks"    />
+    </resultMap>
+
+    <sql id="selectSysComeTableVo">
+        select id, come_name, sex, ide_ntity, wor_kunit, call_link, come_time, leawe_time, rea_marks from sys_come_table
+    </sql>
+
+    <select id="selectSysComeTableList" parameterType="SysComeTable" resultMap="SysComeTableResult">
+        <include refid="selectSysComeTableVo"/>
+        <where>  
+            <if test="comeName != null  and comeName != ''"> and come_name = #{comeName}</if>
+            <if test="sex != null  and sex != ''"> and sex = #{sex}</if>
+            <if test="ideNtity != null  and ideNtity != ''"> and ide_ntity = #{ideNtity}</if>
+            <if test="worKunit != null  and worKunit != ''"> and wor_kunit = #{worKunit}</if>
+            <if test="callLink != null  and callLink != ''"> and call_link = #{callLink}</if>
+            <if test="comeTime != null "> and come_time = #{comeTime}</if>
+            <if test="leaweTime != null "> and leawe_time = #{leaweTime}</if>
+            <if test="reaMarks != null  and reaMarks != ''"> and rea_marks = #{reaMarks}</if>
+        </where>
+    </select>
+    
+    <select id="selectSysComeTableById" parameterType="Long" resultMap="SysComeTableResult">
+        <include refid="selectSysComeTableVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSysComeTable" parameterType="SysComeTable">
+        insert into sys_come_table
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="comeName != null">come_name,</if>
+            <if test="sex != null">sex,</if>
+            <if test="ideNtity != null">ide_ntity,</if>
+            <if test="worKunit != null">wor_kunit,</if>
+            <if test="callLink != null">call_link,</if>
+            <if test="comeTime != null">come_time,</if>
+            <if test="leaweTime != null">leawe_time,</if>
+            <if test="reaMarks != null">rea_marks,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="comeName != null">#{comeName},</if>
+            <if test="sex != null">#{sex},</if>
+            <if test="ideNtity != null">#{ideNtity},</if>
+            <if test="worKunit != null">#{worKunit},</if>
+            <if test="callLink != null">#{callLink},</if>
+            <if test="comeTime != null">#{comeTime},</if>
+            <if test="leaweTime != null">#{leaweTime},</if>
+            <if test="reaMarks != null">#{reaMarks},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysComeTable" parameterType="SysComeTable">
+        update sys_come_table
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="comeName != null">come_name = #{comeName},</if>
+            <if test="sex != null">sex = #{sex},</if>
+            <if test="ideNtity != null">ide_ntity = #{ideNtity},</if>
+            <if test="worKunit != null">wor_kunit = #{worKunit},</if>
+            <if test="callLink != null">call_link = #{callLink},</if>
+            <if test="comeTime != null">come_time = #{comeTime},</if>
+            <if test="leaweTime != null">leawe_time = #{leaweTime},</if>
+            <if test="reaMarks != null">rea_marks = #{reaMarks},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSysComeTableById" parameterType="Long">
+        delete from sys_come_table where id = #{id}
+    </delete>
+
+    <delete id="deleteSysComeTableByIds" parameterType="String">
+        delete from sys_come_table where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

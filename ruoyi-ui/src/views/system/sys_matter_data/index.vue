@@ -1,6 +1,8 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
+
+
       <el-form-item label="订单id" prop="orderId">
         <el-input
           v-model="queryParams.orderId"
@@ -10,6 +12,8 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+
+
       <el-form-item label="大区" prop="region">
         <el-input
           v-model="queryParams.region"
@@ -206,8 +210,22 @@
     <!-- 添加或修改sys_matter_data对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="订单id" prop="orderId">
-          <el-input v-model="form.orderId" placeholder="请输入订单id" />
+
+  <el-form-item label="订单id" prop="orderId">
+          <el-select v-model="form.orderId" placeholder="请选择订单id">
+            <el-option
+              v-for="dict in orderIdOptions"
+              :key="dict.dictValue"
+              :label="dict.dictLabel"
+              :value="dict.dictValue"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+
+
+      <!--    <el-input v-model="form.orderId" placeholder="请输入订单id" />
+
+      -->
         </el-form-item>
         <el-form-item label="大区" prop="region">
           <el-input v-model="form.region" placeholder="请输入大区" />
@@ -307,6 +325,8 @@ export default {
       total: 0,
       // sys_matter_data表格数据
       sys_matter_dataList: [],
+      // 订单id列表
+      orderIdOptions :[],
       // 弹出层标题
       title: "",
       // 是否显示弹出层
@@ -353,8 +373,14 @@ export default {
   },
   created() {
     this.getList();
+   this.getDicts("order_idtest").then(response => {
+      this.orderIdOptions = response.data;
+    });
   },
   methods: {
+
+
+
     /** 查询sys_matter_data列表 */
     getList() {
       this.loading = true;
