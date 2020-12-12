@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysTubiaoDataMapper">
+    
+    <resultMap type="SysTubiaoData" id="SysTubiaoDataResult">
+        <result property="digndanId"    column="digndan_id"    />
+        <result property="liushuiId"    column="liushui_id"    />
+        <result property="shishouJine"    column="shishou_jine"    />
+        <result property="youhuiJine"    column="youhui_jine"    />
+        <result property="huiyuanCall"    column="huiyuan_call"    />
+    </resultMap>
+
+    <sql id="selectSysTubiaoDataVo">
+        select digndan_id, liushui_id, shishou_jine, youhui_jine, huiyuan_call from sys_tubiao_data
+    </sql>
+
+    <select id="selectSysTubiaoDataList" parameterType="SysTubiaoData" resultMap="SysTubiaoDataResult">
+        <include refid="selectSysTubiaoDataVo"/>
+        <where>  
+            <if test="digndanId != null  and digndanId != ''"> and digndan_id = #{digndanId}</if>
+            <if test="liushuiId != null  and liushuiId != ''"> and liushui_id = #{liushuiId}</if>
+            <if test="shishouJine != null  and shishouJine != ''"> and shishou_jine = #{shishouJine}</if>
+            <if test="youhuiJine != null  and youhuiJine != ''"> and youhui_jine = #{youhuiJine}</if>
+            <if test="huiyuanCall != null  and huiyuanCall != ''"> and huiyuan_call = #{huiyuanCall}</if>
+        </where>
+    </select>
+    
+    <select id="selectSysTubiaoDataById" parameterType="String" resultMap="SysTubiaoDataResult">
+        <include refid="selectSysTubiaoDataVo"/>
+        where digndan_id = #{digndanId}
+    </select>
+        
+    <insert id="insertSysTubiaoData" parameterType="SysTubiaoData">
+        insert into sys_tubiao_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="digndanId != null">digndan_id,</if>
+            <if test="liushuiId != null">liushui_id,</if>
+            <if test="shishouJine != null">shishou_jine,</if>
+            <if test="youhuiJine != null">youhui_jine,</if>
+            <if test="huiyuanCall != null">huiyuan_call,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="digndanId != null">#{digndanId},</if>
+            <if test="liushuiId != null">#{liushuiId},</if>
+            <if test="shishouJine != null">#{shishouJine},</if>
+            <if test="youhuiJine != null">#{youhuiJine},</if>
+            <if test="huiyuanCall != null">#{huiyuanCall},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysTubiaoData" parameterType="SysTubiaoData">
+        update sys_tubiao_data
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="liushuiId != null">liushui_id = #{liushuiId},</if>
+            <if test="shishouJine != null">shishou_jine = #{shishouJine},</if>
+            <if test="youhuiJine != null">youhui_jine = #{youhuiJine},</if>
+            <if test="huiyuanCall != null">huiyuan_call = #{huiyuanCall},</if>
+        </trim>
+        where digndan_id = #{digndanId}
+    </update>
+
+    <delete id="deleteSysTubiaoDataById" parameterType="String">
+        delete from sys_tubiao_data where digndan_id = #{digndanId}
+    </delete>
+
+    <delete id="deleteSysTubiaoDataByIds" parameterType="String">
+        delete from sys_tubiao_data where digndan_id in 
+        <foreach item="digndanId" collection="array" open="(" separator="," close=")">
+            #{digndanId}
+        </foreach>
+    </delete>
+    
+</mapper>

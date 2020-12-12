@@ -22,7 +22,9 @@ import { parseTime, resetForm, addDateRange, selectDictLabel, selectDictLabels, 
 import Pagination from "@/components/Pagination";
 //自定义表格工具扩展
 import RightToolbar from "@/components/RightToolbar"
+import echarts from 'echarts' //引入echarts
 
+Vue.prototype.$echarts = echarts //引入组件
 // 全局方法挂载
 Vue.prototype.getDicts = getDicts
 Vue.prototype.getConfigKey = getConfigKey
