@@ -24,6 +24,10 @@ import Pagination from "@/components/Pagination";
 import RightToolbar from "@/components/RightToolbar"
 import echarts from 'echarts' //引入echarts
 
+const g2plot = require('@antv/g2plot') 
+
+
+
 Vue.prototype.$echarts = echarts //引入组件
 // 全局方法挂载
 Vue.prototype.getDicts = getDicts
@@ -35,6 +39,8 @@ Vue.prototype.selectDictLabel = selectDictLabel
 Vue.prototype.selectDictLabels = selectDictLabels
 Vue.prototype.download = download
 Vue.prototype.handleTree = handleTree
+
+Vue.prototype.$g2plot = g2plot // 2. 将g2plot挂载到vue中
 
 Vue.prototype.msgSuccess = function (msg) {
   this.$message({ showClose: true, message: msg, type: "success" });

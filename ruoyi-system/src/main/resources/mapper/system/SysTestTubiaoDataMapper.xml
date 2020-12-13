@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysTestTubiaoDataMapper">
+    
+    <resultMap type="SysTestTubiaoData" id="SysTestTubiaoDataResult">
+        <result property="ordId"    column="ord_id"    />
+        <result property="f1"    column="f1"    />
+        <result property="f2"    column="f2"    />
+        <result property="f3"    column="f3"    />
+        <result property="f4"    column="f4"    />
+        <result property="f5"    column="f5"    />
+        <result property="f6"    column="f6"    />
+        <result property="f7"    column="f7"    />
+        <result property="f8"    column="f8"    />
+        <result property="f9"    column="f9"    />
+        <result property="f10"    column="f10"    />
+        <result property="f11"    column="f11"    />
+        <result property="f12"    column="f12"    />
+        <result property="f13"    column="f13"    />
+        <result property="f14"    column="f14"    />
+        <result property="f15"    column="f15"    />
+        <result property="f16"    column="f16"    />
+        <result property="f17"    column="f17"    />
+        <result property="f18"    column="f18"    />
+        <result property="f19"    column="f19"    />
+        <result property="f20"    column="f20"    />
+        <result property="f21"    column="f21"    />
+        <result property="f22"    column="f22"    />
+        <result property="f23"    column="f23"    />
+        <result property="f24"    column="f24"    />
+        <result property="f25"    column="f25"    />
+        <result property="f26"    column="f26"    />
+        <result property="f27"    column="f27"    />
+        <result property="f28"    column="f28"    />
+        <result property="f29"    column="f29"    />
+        <result property="f30"    column="f30"    />
+        <result property="f31"    column="f31"    />
+        <result property="f32"    column="f32"    />
+        <result property="f33"    column="f33"    />
+        <result property="f34"    column="f34"    />
+        <result property="f35"    column="f35"    />
+        <result property="f36"    column="f36"    />
+        <result property="f37"    column="f37"    />
+    </resultMap>
+
+    <sql id="selectSysTestTubiaoDataVo">
+        select ord_id, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16, f17, f18, f19, f20, f21, f22, f23, f24, f25, f26, f27, f28, f29, f30, f31, f32, f33, f34, f35, f36, f37 from sys_test_tubiao_data
+    </sql>
+
+    <select id="selectSysTestTubiaoDataList" parameterType="SysTestTubiaoData" resultMap="SysTestTubiaoDataResult">
+        <include refid="selectSysTestTubiaoDataVo"/>
+        <where>  
+            <if test="ordId != null  and ordId != ''"> and ord_id = #{ordId}</if>
+            <if test="f1 != null  and f1 != ''"> and f1 = #{f1}</if>
+            <if test="f2 != null  and f2 != ''"> and f2 = #{f2}</if>
+            <if test="f3 != null  and f3 != ''"> and f3 = #{f3}</if>
+            <if test="f4 != null  and f4 != ''"> and f4 = #{f4}</if>
+            <if test="f5 != null  and f5 != ''"> and f5 = #{f5}</if>
+            <if test="f6 != null  and f6 != ''"> and f6 = #{f6}</if>
+            <if test="f7 != null  and f7 != ''"> and f7 = #{f7}</if>
+            <if test="f8 != null  and f8 != ''"> and f8 = #{f8}</if>
+            <if test="f9 != null  and f9 != ''"> and f9 = #{f9}</if>
+            <if test="f10 != null  and f10 != ''"> and f10 = #{f10}</if>
+            <if test="f11 != null  and f11 != ''"> and f11 = #{f11}</if>
+            <if test="f12 != null  and f12 != ''"> and f12 = #{f12}</if>
+            <if test="f13 != null  and f13 != ''"> and f13 = #{f13}</if>
+            <if test="f14 != null  and f14 != ''"> and f14 = #{f14}</if>
+            <if test="f15 != null  and f15 != ''"> and f15 = #{f15}</if>
+            <if test="f16 != null  and f16 != ''"> and f16 = #{f16}</if>
+            <if test="f17 != null  and f17 != ''"> and f17 = #{f17}</if>
+            <if test="f18 != null  and f18 != ''"> and f18 = #{f18}</if>
+            <if test="f19 != null  and f19 != ''"> and f19 = #{f19}</if>
+            <if test="f20 != null  and f20 != ''"> and f20 = #{f20}</if>
+            <if test="f21 != null  and f21 != ''"> and f21 = #{f21}</if>
+            <if test="f22 != null  and f22 != ''"> and f22 = #{f22}</if>
+            <if test="f23 != null  and f23 != ''"> and f23 = #{f23}</if>
+            <if test="f24 != null  and f24 != ''"> and f24 = #{f24}</if>
+            <if test="f25 != null  and f25 != ''"> and f25 = #{f25}</if>
+            <if test="f26 != null  and f26 != ''"> and f26 = #{f26}</if>
+            <if test="f27 != null  and f27 != ''"> and f27 = #{f27}</if>
+            <if test="f28 != null  and f28 != ''"> and f28 = #{f28}</if>
+            <if test="f29 != null  and f29 != ''"> and f29 = #{f29}</if>
+            <if test="f30 != null  and f30 != ''"> and f30 = #{f30}</if>
+            <if test="f31 != null  and f31 != ''"> and f31 = #{f31}</if>
+            <if test="f32 != null  and f32 != ''"> and f32 = #{f32}</if>
+            <if test="f33 != null  and f33 != ''"> and f33 = #{f33}</if>
+            <if test="f34 != null  and f34 != ''"> and f34 = #{f34}</if>
+            <if test="f35 != null  and f35 != ''"> and f35 = #{f35}</if>
+            <if test="f36 != null  and f36 != ''"> and f36 = #{f36}</if>
+            <if test="f37 != null  and f37 != ''"> and f37 = #{f37}</if>
+        </where>
+    </select>
+    
+    <select id="selectSysTestTubiaoDataById" parameterType="String" resultMap="SysTestTubiaoDataResult">
+        <include refid="selectSysTestTubiaoDataVo"/>
+        where ord_id = #{ordId}
+    </select>
+        
+    <insert id="insertSysTestTubiaoData" parameterType="SysTestTubiaoData">
+        insert into sys_test_tubiao_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ordId != null">ord_id,</if>
+            <if test="f1 != null">f1,</if>
+            <if test="f2 != null">f2,</if>
+            <if test="f3 != null">f3,</if>
+            <if test="f4 != null">f4,</if>
+            <if test="f5 != null">f5,</if>
+            <if test="f6 != null">f6,</if>
+            <if test="f7 != null">f7,</if>
+            <if test="f8 != null">f8,</if>
+            <if test="f9 != null">f9,</if>
+            <if test="f10 != null">f10,</if>
+            <if test="f11 != null">f11,</if>
+            <if test="f12 != null">f12,</if>
+            <if test="f13 != null">f13,</if>
+            <if test="f14 != null">f14,</if>
+            <if test="f15 != null">f15,</if>
+            <if test="f16 != null">f16,</if>
+            <if test="f17 != null">f17,</if>
+            <if test="f18 != null">f18,</if>
+            <if test="f19 != null">f19,</if>
+            <if test="f20 != null">f20,</if>
+            <if test="f21 != null">f21,</if>
+            <if test="f22 != null">f22,</if>
+            <if test="f23 != null">f23,</if>
+            <if test="f24 != null">f24,</if>
+            <if test="f25 != null">f25,</if>
+            <if test="f26 != null">f26,</if>
+            <if test="f27 != null">f27,</if>
+            <if test="f28 != null">f28,</if>
+            <if test="f29 != null">f29,</if>
+            <if test="f30 != null">f30,</if>
+            <if test="f31 != null">f31,</if>
+            <if test="f32 != null">f32,</if>
+            <if test="f33 != null">f33,</if>
+            <if test="f34 != null">f34,</if>
+            <if test="f35 != null">f35,</if>
+            <if test="f36 != null">f36,</if>
+            <if test="f37 != null">f37,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ordId != null">#{ordId},</if>
+            <if test="f1 != null">#{f1},</if>
+            <if test="f2 != null">#{f2},</if>
+            <if test="f3 != null">#{f3},</if>
+            <if test="f4 != null">#{f4},</if>
+            <if test="f5 != null">#{f5},</if>
+            <if test="f6 != null">#{f6},</if>
+            <if test="f7 != null">#{f7},</if>
+            <if test="f8 != null">#{f8},</if>
+            <if test="f9 != null">#{f9},</if>
+            <if test="f10 != null">#{f10},</if>
+            <if test="f11 != null">#{f11},</if>
+            <if test="f12 != null">#{f12},</if>
+            <if test="f13 != null">#{f13},</if>
+            <if test="f14 != null">#{f14},</if>
+            <if test="f15 != null">#{f15},</if>
+            <if test="f16 != null">#{f16},</if>
+            <if test="f17 != null">#{f17},</if>
+            <if test="f18 != null">#{f18},</if>
+            <if test="f19 != null">#{f19},</if>
+            <if test="f20 != null">#{f20},</if>
+            <if test="f21 != null">#{f21},</if>
+            <if test="f22 != null">#{f22},</if>
+            <if test="f23 != null">#{f23},</if>
+            <if test="f24 != null">#{f24},</if>
+            <if test="f25 != null">#{f25},</if>
+            <if test="f26 != null">#{f26},</if>
+            <if test="f27 != null">#{f27},</if>
+            <if test="f28 != null">#{f28},</if>
+            <if test="f29 != null">#{f29},</if>
+            <if test="f30 != null">#{f30},</if>
+            <if test="f31 != null">#{f31},</if>
+            <if test="f32 != null">#{f32},</if>
+            <if test="f33 != null">#{f33},</if>
+            <if test="f34 != null">#{f34},</if>
+            <if test="f35 != null">#{f35},</if>
+            <if test="f36 != null">#{f36},</if>
+            <if test="f37 != null">#{f37},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysTestTubiaoData" parameterType="SysTestTubiaoData">
+        update sys_test_tubiao_data
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="f1 != null">f1 = #{f1},</if>
+            <if test="f2 != null">f2 = #{f2},</if>
+            <if test="f3 != null">f3 = #{f3},</if>
+            <if test="f4 != null">f4 = #{f4},</if>
+            <if test="f5 != null">f5 = #{f5},</if>
+            <if test="f6 != null">f6 = #{f6},</if>
+            <if test="f7 != null">f7 = #{f7},</if>
+            <if test="f8 != null">f8 = #{f8},</if>
+            <if test="f9 != null">f9 = #{f9},</if>
+            <if test="f10 != null">f10 = #{f10},</if>
+            <if test="f11 != null">f11 = #{f11},</if>
+            <if test="f12 != null">f12 = #{f12},</if>
+            <if test="f13 != null">f13 = #{f13},</if>
+            <if test="f14 != null">f14 = #{f14},</if>
+            <if test="f15 != null">f15 = #{f15},</if>
+            <if test="f16 != null">f16 = #{f16},</if>
+            <if test="f17 != null">f17 = #{f17},</if>
+            <if test="f18 != null">f18 = #{f18},</if>
+            <if test="f19 != null">f19 = #{f19},</if>
+            <if test="f20 != null">f20 = #{f20},</if>
+            <if test="f21 != null">f21 = #{f21},</if>
+            <if test="f22 != null">f22 = #{f22},</if>
+            <if test="f23 != null">f23 = #{f23},</if>
+            <if test="f24 != null">f24 = #{f24},</if>
+            <if test="f25 != null">f25 = #{f25},</if>
+            <if test="f26 != null">f26 = #{f26},</if>
+            <if test="f27 != null">f27 = #{f27},</if>
+            <if test="f28 != null">f28 = #{f28},</if>
+            <if test="f29 != null">f29 = #{f29},</if>
+            <if test="f30 != null">f30 = #{f30},</if>
+            <if test="f31 != null">f31 = #{f31},</if>
+            <if test="f32 != null">f32 = #{f32},</if>
+            <if test="f33 != null">f33 = #{f33},</if>
+            <if test="f34 != null">f34 = #{f34},</if>
+            <if test="f35 != null">f35 = #{f35},</if>
+            <if test="f36 != null">f36 = #{f36},</if>
+            <if test="f37 != null">f37 = #{f37},</if>
+        </trim>
+        where ord_id = #{ordId}
+    </update>
+
+    <delete id="deleteSysTestTubiaoDataById" parameterType="String">
+        delete from sys_test_tubiao_data where ord_id = #{ordId}
+    </delete>
+
+    <delete id="deleteSysTestTubiaoDataByIds" parameterType="String">
+        delete from sys_test_tubiao_data where ord_id in 
+        <foreach item="ordId" collection="array" open="(" separator="," close=")">
+            #{ordId}
+        </foreach>
+    </delete>
+    
+</mapper>
